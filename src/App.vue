@@ -24,56 +24,83 @@
           width="100"
         />
       </div>
+
+      <v-spacer></v-spacer>
+
+      <v-btn
+              href="/login"
+              target="_blank"
+              text
+      >
+        <span class="mr-2">Login</span>
+        <v-icon>mdi-login</v-icon>
+      </v-btn>
+      <v-btn
+              href="/register"
+              target="_blank"
+              text
+      >
+        <span class="mr-2">Register</span>
+        <v-icon>mdi-account-multiple-plus</v-icon>
+      </v-btn>
     </v-app-bar>
 
+<!--    v-model="drawer"-->
+<!--    :color="color"-->
+<!--    :expand-on-hover="expandOnHover"-->
+<!--    :mini-variant="miniVariant"-->
+<!--    :right="right"-->
+<!--    :permanent="permanent"-->
+<!--    absolute-->
+<!--    dark-->
 
-    <v-navigation-drawer
-              v-model="drawer"
-              :color="color"
-              :expand-on-hover="expandOnHover"
-              :mini-variant="miniVariant"
-              :right="right"
-              :permanent="permanent"
+    <v-navigation-drawer app
               absolute
               dark
+              v-model="drawer"
+    >
+      <v-list
+              dense
+              nav
+              class="py-0"
       >
-        <v-list
-                dense
-                nav
-                class="py-0"
+        <v-list-item two-line :class="'px-0'">
+<!--          <v-list-item two-line :class="miniVariant && 'px-0'">-->
+
+          <v-list-item-avatar>
+            <img src="https://randomuser.me/api/portraits/men/81.jpg" alt="">
+          </v-list-item-avatar>
+
+          <v-list-item-content>
+            <v-list-item-title>Application</v-list-item-title>
+            <v-list-item-subtitle>Subtext</v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item
+                v-for="item in items"
+                :key="item.title"
+                link
         >
-          <v-list-item two-line :class="miniVariant && 'px-0'">
-            <v-list-item-avatar>
-              <img src="https://randomuser.me/api/portraits/men/81.jpg" alt="">
-            </v-list-item-avatar>
+          <v-list-item-icon>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-item-icon>
 
-            <v-list-item-content>
-              <v-list-item-title>Application</v-list-item-title>
-              <v-list-item-subtitle>Subtext</v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-          <v-list-item
-                  v-for="item in items"
-                  :key="item.title"
-                  link
-          >
-            <v-list-item-icon>
-              <v-icon>{{ item.icon }}</v-icon>
-            </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+    <v-main>
+      <v-container fluid>
+        <router-view></router-view>
 
-            <v-list-item-content>
-              <v-list-item-title>{{ item.title }}</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-        </v-list>
-      </v-navigation-drawer>
-    <v-content>
-      <router-view></router-view>
+<!--        <loader></loader>-->
 
-      <loader></loader>
+<!--        <messages-info></messages-info>-->
+      </v-container>
 
-      <messages-info></messages-info>
-    </v-content>
+    </v-main>
   </v-app>
 </template>
 
@@ -86,6 +113,7 @@ export default {
   },
 
   data: () => ({
+    drawer: true,
     items: [
       { title: 'Dashboard', icon: 'mdi-view-dashboard' },
       { title: 'Photos', icon: 'mdi-image' },
