@@ -1,5 +1,5 @@
 # front
-
+new SPA front
 ## Project setup
 ```
 npm install
