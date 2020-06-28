@@ -9,12 +9,13 @@
     <!--    absolute-->
     <!--    dark-->
 
-    <v-navigation-drawer app
-                         absolute
-                         dark
-                         v-model="drawer"
-                         :mini-variant="miniVariant"
-                         :expand-on-hover="expandOnHover"
+    <v-navigation-drawer
+            app
+            absolute
+            dark
+            :value="drawer"
+            :mini-variant="miniVariant"
+            :expand-on-hover="expandOnHover"
 
     >
         <v-list
@@ -52,10 +53,14 @@
 </template>
 
 <script>
+    import MixinDrawer from '@/mixins/MixinDrawer';
+
     export default {
+        mixin: [
+            MixinDrawer
+        ],
         name: "Navigation",
         data: () => ({
-            drawer: true,
             miniVariant: false,
             expandOnHover: false,
             items: [
@@ -63,7 +68,12 @@
                 { title: 'Photos', icon: 'mdi-image' },
                 { title: 'About', icon: 'mdi-help-box' },
             ],
-        })
+        }),
+        computed: {
+            drawer() {
+                return this.$store.getters['drawer']
+            }
+        }
     }
 </script>
 

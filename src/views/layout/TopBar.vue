@@ -1,13 +1,15 @@
 <template>
     <v-app-bar
             app
+            clipped-left
             color="primary"
             dark
     >
         <div class="d-flex align-center">
+            <v-app-bar-nav-icon @click="() => drawer = !drawer"></v-app-bar-nav-icon>
             <v-img
                     alt="Vuetify Logo"
-                    class="shrink mr-2"
+                    class="shrink mr-2 mx-4"
                     contain
                     src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
                     transition="scale-transition"
@@ -44,7 +46,12 @@
 </template>
 
 <script>
+    import MixinDrawer from '@/mixins/MixinDrawer';
+
     export default {
+        mixins: [
+            MixinDrawer
+        ],
         name: "Header"
     }
 </script>
