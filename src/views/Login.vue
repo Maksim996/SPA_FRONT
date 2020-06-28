@@ -14,14 +14,14 @@
                         dark
                         flat
                 >
-                    <v-toolbar-title>Login form</v-toolbar-title>
+                    <v-toolbar-title>{{$t('t.loginIn')}}</v-toolbar-title>
                     <v-spacer></v-spacer>
 
                 </v-toolbar>
                 <v-card-text>
                     <v-form>
                         <v-text-field
-                                label="Login"
+                                :label="$t('t.login')"
                                 name="login"
                                 prepend-icon="mdi-account"
                                 type="text"
@@ -29,7 +29,7 @@
 
                         <v-text-field
                                 id="password"
-                                label="Password"
+                                :label="$t('t.password')"
                                 name="password"
                                 prepend-icon="mdi-lock"
                                 type="password"
@@ -38,7 +38,7 @@
                 </v-card-text>
                 <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn color="primary">Login</v-btn>
+                    <v-btn color="primary">{{$t('t.loginIn')}}</v-btn>
                 </v-card-actions>
             </v-card>
         </v-col>

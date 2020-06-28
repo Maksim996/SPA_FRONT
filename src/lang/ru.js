@@ -1,6 +1,10 @@
 export default {
     t: {
-        login: 'Авторизоваться',
-        register: 'Регестрация'
+        loginIn: 'Авторизоваться',
+        register: 'Регестрация',
+        password: 'Пароль',
+        login: 'Логин',
+
+
     }
 }
