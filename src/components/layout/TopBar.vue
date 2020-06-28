@@ -29,14 +29,14 @@
         <v-spacer></v-spacer>
 
         <v-btn
-                href="/login"
+                to="/login"
                 text
         >
             <span class="mr-2">Login</span>
             <v-icon>mdi-login</v-icon>
         </v-btn>
         <v-btn
-                href="/register"
+                to="/register"
                 text
         >
             <span class="mr-2">Register</span>

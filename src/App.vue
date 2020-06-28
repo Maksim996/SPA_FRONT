@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import Navigation from "@/views/layout/Navigation.vue";
-import TopBar from "@/views/layout/TopBar.vue";
+import Navigation from "@/components/layout/Navigation.vue";
+import TopBar from "@/components/layout/TopBar.vue";
 
 export default {
   name: 'App',
