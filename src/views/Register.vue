@@ -52,8 +52,13 @@
 </template>
 
 <script>
+    import api from '@/api';
+
     export default {
-        name: "Register"
+        name: "Register",
+        created() {
+             api.post(process.env.VUE_APP_BASE_URL+ '/api/register', [{'res':'yes'}]);
+        }
     }
 </script>
 

@@ -4,7 +4,7 @@ export default {
         register: 'Регестрация',
         password: 'Пароль',
         login: 'Логин',
-
+        name: 'Имя',
 
     }
 }
