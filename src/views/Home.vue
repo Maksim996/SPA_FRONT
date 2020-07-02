@@ -38,7 +38,7 @@
             <v-btn  x-large
                     color="purple"
                     dark
-                    to="/dashboard"
+                    to="/"
             >
               <span class="mr-2">Dashboard</span>
               <v-icon>mdi-view-dashboard-outline</v-icon>
