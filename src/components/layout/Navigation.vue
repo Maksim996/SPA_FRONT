@@ -23,7 +23,6 @@
                 nav
                 class="py-0"
         >
-            <!--        <v-list-item two-line :class="'px-0'">-->
             <v-list-item two-line :class="miniVariant && 'px-0'">
 
                 <v-list-item-avatar>
@@ -39,6 +38,7 @@
                     v-for="item in items"
                     :key="item.title"
                     link
+                    :to="item.path"
             >
                 <v-list-item-icon>
                     <v-icon>{{ item.icon }}</v-icon>
@@ -64,8 +64,9 @@
             miniVariant: false,
             expandOnHover: false,
             items: [
-                { title: 'Dashboard', icon: 'mdi-view-dashboard' },
-                { title: 'Photos', icon: 'mdi-image' },
+                { title: 'Home', icon: 'mdi-home', path:'/' },
+                { title: 'Dashboard', icon: 'mdi-view-dashboard', path:'/dashboard' },
+                { title: 'Profile', icon: 'mdi-image', path:'dashboard/profile'},
                 { title: 'About', icon: 'mdi-help-box' },
             ],
         }),

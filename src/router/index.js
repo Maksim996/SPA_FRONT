@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
+import Dashboard from "../views/pages/Dashpoard.vue";
+import Profile from "../views/pages/Profile.vue";
 
 Vue.use(VueRouter);
 
@@ -11,6 +13,18 @@ Vue.use(VueRouter);
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: Dashboard,
+    children: [
+      {
+        path: 'profile',
+        name: 'Profile',
+        component: Profile,
+      }
+    ]
   },
   {
     path: '/login',
