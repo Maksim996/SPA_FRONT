@@ -64,9 +64,9 @@
             miniVariant: false,
             expandOnHover: false,
             items: [
-                { title: 'Home', icon: 'mdi-home', path:'/' },
-                { title: 'Dashboard', icon: 'mdi-view-dashboard', path:'/dashboard' },
-                { title: 'Profile', icon: 'mdi-image', path:'dashboard/profile'},
+                { title: 'Home', icon: 'mdi-home', path:'/home' },
+                { title: 'Dashboard', icon: 'mdi-view-dashboard', path:'/' },
+                { title: 'Profile', icon: 'mdi-image', path:'/profile'},
                 { title: 'About', icon: 'mdi-help-box' },
             ],
         }),
