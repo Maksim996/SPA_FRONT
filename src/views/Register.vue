@@ -44,7 +44,7 @@
                 </v-card-text>
                 <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn color="primary">{{ $t('t.register') }}</v-btn>
+                    <v-btn @click="setUser()" color="primary">{{ $t('t.register') }}</v-btn>
                 </v-card-actions>
             </v-card>
         </v-col>
@@ -56,9 +56,16 @@
 
     export default {
         name: "Register",
-        created() {
-             api.post(process.env.VUE_APP_BASE_URL+ '/api/register', [{'res':'yes'}]);
-        }
+        methods: {
+            async setUser(){
+                const data = {
+                    name: '',
+                    email: '',
+                    password: ''
+                };
+                await api.post(process.env.VUE_APP_BASE_URL+ '/api/register', data);
+            }
+         }
     }
 </script>
 
