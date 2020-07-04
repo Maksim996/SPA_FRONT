@@ -10,6 +10,7 @@
     "axios": "^0.19.2",
     "core-js": "^3.6.5",
     "json-to-query-string": "^1.0.0",
+    "vee-validate": "^3.3.7",
     "vue": "^2.6.11",
     "vue-axios": "^2.1.5",
     "vue-i18n": "^8.18.2",

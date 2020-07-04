@@ -6,7 +6,7 @@ import ua from '@/lang/ua';
 Vue.use(VueI18n);
 
 export default new VueI18n({
-    locale: process.env.VUE_APP_I18N_LOCALE,
+    locale: process.env.VUE_APP_LOCALE,
     messages: {
         ru, ua
     }
