@@ -6,6 +6,9 @@ import vuetify from './plugins/vuetify';
 import '@/plugins/veevalidate';
 import i18n from "./plugins/i18n";
 import axios from "axios";
+import GlobalMixin from "@/mixins/GlobalMixin";
+
+Vue.mixin(GlobalMixin);
 
 Vue.config.productionTip = false;
 

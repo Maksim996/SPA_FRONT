@@ -2,6 +2,7 @@
   <v-app-bar
     app
     clipped-left
+    dense
     class="purple darken-2"
     dark
   >
@@ -25,9 +26,7 @@
         width="100"
       />
     </div>
-
     <v-spacer></v-spacer>
-
     <v-btn
       to="/login"
       text
