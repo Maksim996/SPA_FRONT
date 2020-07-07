@@ -1,4 +1,10 @@
 export default {
+  data() {
+    return {
+      GlobalTypePatient: 'Patient',
+      GlobalTypePersonnel: 'Personnel',
+    }
+  },
   methods:{
     GlobalMixinGoToPath(name, query, option) {
       if (option === '_blank') {

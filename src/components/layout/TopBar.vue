@@ -13,7 +13,7 @@
         class="shrink hidden-sm-and-down"
         contain
         min-width="100"
-        src="images/logo/logo.svg"
+        :src="logo"
         width="100"
       />
     </div>
@@ -42,6 +42,11 @@
     mixins: [
       MixinDrawer
     ],
+    data() {
+      return {
+        logo: process.env.VUE_APP_LOGO,
+      }
+    },
     name: "Header"
   }
 </script>

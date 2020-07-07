@@ -11,5 +11,11 @@ export default {
     Roots: 'Директори',
     CreateRoot: 'Створити директора',
     RootList: 'Список директорів',
+    ForgotPassword: 'Забув пароль',
+    Patient: 'Пацієнт',
+    Personnel: 'Персонал',
+    NumberMobPhone: 'Номер моб.телефону'
+
+
   }
 }
