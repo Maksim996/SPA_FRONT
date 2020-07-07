@@ -5,6 +5,14 @@
   >
     <v-container
     >
+      <v-row class="switch-type">
+        <v-btn
+          color="purple darken-2 white--text"
+          @click="switchType"
+        >
+          {{$t('t.'+ switchName)}}
+        </v-btn>
+      </v-row>
       <v-row align="center"
              justify="center"
       >
@@ -93,21 +101,40 @@
     data() {
       return {
         logo: process.env.VUE_APP_LOGO,
-        type: 'Patient',//Personnel
+        type: 'Personnel',
+        switchName: '',
         phone: '',
         email: '',
         password: '',
       }
     },
+    mounted() {
+      this.switchType();
+    },
     methods: {
       async authUser() {
         const valid = await this.$refs.observer.validate('value').then((res) => res);
         console.log(valid);
+      },
+      switchType() {
+        switch (this.type) {
+          case this.GlobalTypePersonnel:
+            this.type = this.GlobalTypePatient;
+            this.switchName = this.GlobalTypePersonnel;
+            break;
+          case this.GlobalTypePatient:
+            this.type = this.GlobalTypePersonnel;
+            this.switchName = this.GlobalTypePatient;
+            break;
+        }
       }
     }
   }
 </script>
 
 <style scoped>
-
+  .switch-type{
+    position: absolute;
+    right: 50px;
+  }
 </style>
