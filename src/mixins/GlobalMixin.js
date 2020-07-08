@@ -3,6 +3,7 @@ export default {
     return {
       GlobalTypePatient: 'Patient',
       GlobalTypePersonnel: 'Personnel',
+      GlobalMaskPhone: process.env.VUE_APP_MASK_PHONE,
     }
   },
   methods:{

@@ -7,7 +7,9 @@ import '@/plugins/veevalidate';
 import i18n from "./plugins/i18n";
 import axios from "axios";
 import GlobalMixin from "@/mixins/GlobalMixin";
+import VueMask from 'v-mask'
 
+Vue.use(VueMask);
 Vue.mixin(GlobalMixin);
 
 Vue.config.productionTip = false;

@@ -57,14 +57,17 @@
                     :error-messages="errors"
                   ></v-text-field>
                 </validation-provider>
-                <validation-provider v-if="type === GlobalTypePatient " v-slot="{ errors }" :name="$t('t.NumberMobPhone')" rules="required">
+                <validation-provider v-if="type === GlobalTypePatient " v-slot="{ errors }" :name="$t('t.NumberMobPhone')" rules="required|phone">
                   <v-text-field
                     v-model="phone"
+                    class="phone"
                     :label="$t('t.NumberMobPhone')"
                     name="Phone"
+                    placeholder="+38(0**)-***-**-**"
                     prepend-icon="mdi-cellphone-android"
                     :error-messages="errors"
                     type="text"
+                    v-mask="GlobalMaskPhone"
                   ></v-text-field>
                 </validation-provider>
                 <validation-provider v-slot="{ errors }" :name="$t('t.Password')" rules="required|min:8">
@@ -108,11 +111,12 @@
         password: '',
       }
     },
-    mounted() {
+    created() {
       this.switchType();
     },
     methods: {
       async authUser() {
+        console.log(this.phone);
         const valid = await this.$refs.observer.validate('value').then((res) => res);
         console.log(valid);
       },
