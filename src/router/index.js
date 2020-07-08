@@ -5,6 +5,8 @@ import Login from '@/views/auth/Login.vue'
 import Register from '@/views/Register.vue'
 import Dashboard from "@/views/pages/Dashboard.vue";
 import Profile from "@/views/pages/Profile.vue";
+import CreateDirector from "@/views/pages/Director/CreateDirector.vue";
+import ListDirectors from "@/views/pages/Director/ListDirectors";
 
 Vue.use(VueRouter);
 
@@ -23,7 +25,17 @@ Vue.use(VueRouter);
         path: 'profile',
         name: 'Profile',
         component: Profile,
-      }
+      },
+      {
+        path: 'create_director',
+        name: 'CreateDirector',
+        component: CreateDirector,
+      },
+      {
+        path: 'list_directors',
+        name: 'ListDirectors',
+        component: ListDirectors,
+      },
     ]
   },
   {
