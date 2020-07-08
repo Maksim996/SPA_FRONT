@@ -9,23 +9,24 @@ export default {
       icon: 'mdi-account-circle',
       route: 'MyProfile',
     };
-    const CreateRoot = {
-      title: 'CreateRoot',
+    const CreateDirector = {
+      title: 'CreateDirector',
       icon: 'mdi-account-plus',
-      route: 'CreateRoot',
+      route: 'CreateDirector',
     };
-    const RootsList = {
-      title: 'RootList',
+    const ListDirectors = {
+      title: 'ListDirectors',
       icon: 'mdi-clipboard-list',
-      route: 'RootsList',
+      route: 'ListDirectors',
     };
+
     // items
-    const CreateRootAndOptions = {
+    const CreateDirectorAndOptions = {
       title: 'Roots',
       icon: 'mdi-account-multiple',
       submenu: [
-        CreateRoot,
-        RootsList,
+        CreateDirector,
+        ListDirectors,
       ],
     };
 
@@ -36,7 +37,7 @@ export default {
       switch (user.role_id) {
         case ROLES.ID.SuperRoot:
           rows.push(
-            CreateRootAndOptions
+            CreateDirectorAndOptions
           );
           break;
 
