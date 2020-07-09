@@ -7,7 +7,8 @@
     >
       <v-row class="switch-type">
         <v-btn
-          color="purple darken-2 white--text"
+
+          color="btnCC white--text"
           @click="switchType"
         >
           {{$t('t.'+ switchName)}}
@@ -33,7 +34,7 @@
         >
           <v-card >
           <v-toolbar
-            class="purple darken-2"
+            class="headerCC"
             dark
             dense
             flat
@@ -84,10 +85,10 @@
             </ValidationObserver>
           </v-card-text>
           <v-card-actions>
-            <v-btn text small color="purple darken-2 white--text">{{$t('t.ForgotPassword')}}</v-btn>
+            <v-btn text small color="btnCloseCC white--text">{{$t('t.ForgotPassword')}}</v-btn>
             <v-spacer></v-spacer>
             <v-btn
-              color="purple darken-2 white--text"
+              color="btnCC white--text"
               @click="authUser"
             >{{$t('t.LoginIn')}}</v-btn>
           </v-card-actions>

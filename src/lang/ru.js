@@ -4,7 +4,7 @@ export default {
     Register: 'Регестрация',
     Password: 'Пароль',
     Login: 'Логин',
-    Name: 'Имя',
+    // Name: 'Имя',
     Email: 'Почта',
     MyProfile: 'Мой профиль',
     Root: 'Директор',
@@ -15,6 +15,21 @@ export default {
     Patient: 'Пациент',
     Personnel: 'Персонал',
     NumberMobPhone: 'Номер моб. телефону',
+    FirstName: 'Имя',
+    SecondName: 'Фамилия',
+    Patronimic: 'Отчество',
+    Birthday: 'Дата рождения',
+    Additional: 'Дополнительный',
+    Passport: 'Паспорт',
+    Inn_code: 'ИНН',
+    Sex: 'Пол',
+    Description: 'Описание',
+    Image: 'Изображение',
+    Close: 'Закрыть',
+    Save: 'Сохранить',
+    Submit: 'Отправить',
+
+
   },
 
   veeValidate: {

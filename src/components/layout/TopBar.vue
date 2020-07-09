@@ -3,7 +3,7 @@
     app
     clipped-left
     dense
-    class="purple darken-2"
+    color="headerCC"
     dark
   >
     <div class="d-flex align-center">

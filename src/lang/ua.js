@@ -4,7 +4,7 @@ export default {
     Register: 'Реєстрація',
     Password: 'Пароль',
     Login: 'Логін',
-    Name: 'Ім\'я',
+    // Name: 'Ім\'я',
     Email: 'Пошта',
     MyProfile: 'Мій профіль',
     Root: 'Директор',
@@ -14,8 +14,20 @@ export default {
     ForgotPassword: 'Забув пароль',
     Patient: 'Пацієнт',
     Personnel: 'Персонал',
-    NumberMobPhone: 'Номер моб.телефону'
-
+    NumberMobPhone: 'Номер моб.телефону',
+    FirstName: 'Ім\'я',
+    SecondName: 'Прізвище',
+    Patronimic: 'По-батькові',
+    Birthday: 'Дата народження',
+    Additional: 'Додатковий',
+    Passport: 'Паспорт',
+    Inn_code: 'ІНН',
+    Sex: 'Стать',
+    Description: 'Опис',
+    Image: 'Зображення',
+    Close: 'Закрити',
+    Save: 'Зберегти',
+    Submit: 'Відправити',
 
   },
 
