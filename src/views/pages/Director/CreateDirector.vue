@@ -62,7 +62,7 @@
         <!--        @blur="$v.select.$touch()"-->
         <!--      ></v-select>-->
 
-              <v-btn color="btnCC white--text" class="mr-4" @click="submitForm">{{$t('t.Save')}}</v-btn>
+              <v-btn color="btnCC white--text" class="mr-4" @click="submitForm">{{$t('t.Create')}}</v-btn>
         <!--      <v-btn @click="clear">clear</v-btn>-->
       </form>
     </validation-observer>
