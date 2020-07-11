@@ -9,6 +9,7 @@ import axios from "axios";
 import GlobalMixin from "@/mixins/GlobalMixin";
 import vueMaskOptions from "@/plugins/vueMask";
 import VueMask from "v-mask";
+import '@/plugins/sweetalert2';
 
 Vue.use(VueMask,
    vueMaskOptions
@@ -17,12 +18,6 @@ Vue.use(VueMask,
 Vue.mixin(GlobalMixin);
 
 Vue.config.productionTip = false;
-
-Vue.filter('capitalize', function (value) {
-  if (!value) return ''
-  value = value.toString()
-  return value.charAt(0).toUpperCase() + value.slice(1)
-})
 
 new Vue({
   router,

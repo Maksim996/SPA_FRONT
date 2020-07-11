@@ -1,5 +1,5 @@
 <template>
-  <v-card  elevation="0">
+  <v-card elevation="0">
     <v-card-title
       class="font-weight-medium text-h5 text-lg-h4 text-md-h5 mb-5 headerCC--text"
     >
@@ -49,12 +49,10 @@
             sortable: true,
             value: 'name',
           },
-          { text: this.$t('t.NumberMobPhone'), value: 'phone' },
-          { text: this.$t('t.Email'), value: 'email' },
-          { text: this.$t('t.Actions'), value: 'actions', sortable: false },
+          {text: this.$t('t.NumberMobPhone'), value: 'phone'},
+          {text: this.$t('t.Email'), value: 'email'},
+          {text: this.$t('t.Actions'), value: 'actions', sortable: false},
           // { text: 'Carbs (g)', value: 'carbs' },
-          // { text: 'Protein (g)', value: 'protein' },
-          // { text: 'Iron (%)', value: 'iron' },
         ],
         desserts: [
           {
@@ -62,14 +60,29 @@
             phone: '+38(000)-000-00-00',
             email: 'example@example.ua',
             carbs: 24,
-            protein: 4.0,
-            iron: '1%',
           },
-
         ],
       }
     },
-
+    methods: {
+      deleteItem(item) {
+        this.$swal({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.value) {
+            this.$swal(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            )
+          }
+        })
+      }
+    }
   }
 </script>
 

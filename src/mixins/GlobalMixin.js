@@ -13,9 +13,8 @@ export default {
         window.open(link.href, '_blank');
       }
       else {
-        this.$router.push({ name, query });
+        this.$router.push({ name, query }).catch(()=>{});
       }
-
     }
   },
 }
