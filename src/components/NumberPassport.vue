@@ -1,0 +1,115 @@
+<template>
+  <v-row>
+    <v-col cols="12" md="4">
+      <v-row>
+        <v-col cols="12">
+          <v-radio-group v-model="switchTypePassport" row>
+            <v-radio color="btnCC"
+                     class="mb-3"
+                     :label="$t('t.OldNumberPassport')"
+                     value="oldNumberPassport"
+            ></v-radio>
+            <v-radio color="btnCC"
+                     class="mb-3"
+                     :label="$t('t.NewNumberPassport')"
+                     value="newNumberPassport"
+            ></v-radio>
+          </v-radio-group>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col cols="12">
+          <validation-provider
+            v-if="switchTypePassport === 'oldNumberPassport'"
+            v-slot="{ errors }"
+            :name="$t('t.NumberPassport')"
+            rules="required"
+          >
+            <v-text-field
+              v-model="oldNumberPassport"
+              :label="$t('t.NumberPassport')"
+              name="NumberPassport"
+              prepend-icon="mdi-passport"
+              type="text"
+              :error-messages="errors"
+              v-mask="`ЯЯ-##-##-##`"
+              placeholder="MB-00-00-00"
+            ></v-text-field>
+          </validation-provider>
+          <validation-provider
+            v-if="switchTypePassport === 'newNumberPassport'"
+            v-slot="{ errors }"
+            :name="$t('t.NumberPassport')"
+            rules="required"
+          >
+            <v-text-field
+              v-model="newNumberPassport"
+              :label="$t('t.NumberPassport')"
+              name="NumberPassport"
+              prepend-icon="mdi-passport-biometric"
+              type="text"
+              :error-messages="errors"
+              v-mask="`###-###-###`"
+              placeholder="000-000-000"
+            ></v-text-field>
+          </validation-provider>
+        </v-col>
+      </v-row>
+    </v-col>
+    <v-col cols="12" md="4">
+      <template v-if="switchTypePassport === 'oldNumberPassport'">
+        <v-img src="images/passports/oldPassport.jpg" aspect-ratio="3" contain></v-img>
+      </template>
+      <template v-if="switchTypePassport === 'newNumberPassport'">
+        <v-img src="images/passports/newPassport.jpg" aspect-ratio="3" contain></v-img>
+      </template>
+    </v-col>
+  </v-row>
+</template>
+
+
+<script>
+  export default {
+    name: "NumberPassport",
+    data() {
+      return {
+        switchTypePassport: 'oldNumberPassport',
+        oldNumberPassport: '',
+        newNumberPassport: '',
+        numberPassport: '',
+      }
+    },
+    watch: {
+      oldNumberPassport(val) {
+        this.oldNumberPassport = val.toUpperCase();
+        this.setNumberPassport(this.switchTypePassport);
+      },
+      newNumberPassport() {
+        this.setNumberPassport(this.switchTypePassport);
+      },
+      switchTypePassport(val) {
+        this.setNumberPassport(val);
+      },
+    },
+    mounted() {
+      this.setNumberPassport(this.switchTypePassport);
+    },
+    methods: {
+      setNumberPassport(val) {
+        switch (val) {
+          case 'oldNumberPassport':
+            this.numberPassport = this.oldNumberPassport;
+            break;
+          case 'newNumberPassport':
+            this.numberPassport = this.newNumberPassport;
+            break;
+        }
+      }
+    }
+  }
+
+</script>
+
+<style scoped>
+
+</style>

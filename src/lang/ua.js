@@ -28,7 +28,9 @@ export default {
     Close: 'Закрити',
     Save: 'Зберегти',
     Submit: 'Відправити',
-
+    OldNumberPassport: 'Старий зразок паспотру',
+    NewNumberPassport: 'Новий зразок паспорту',
+    NumberPassport: 'Номер паспорту',
   },
 
   veeValidate: {

@@ -1,11 +1,33 @@
 <template>
   <v-container>
+    <v-row>
+      <div>
+        <v-sheet class="font-weight-medium text-h4 text-lg-h4 text-md-h5 mb-5 text-md-center" color="headerCC--text">{{$t('t.CreateDirector')}}</v-sheet>
+      </div>
+    </v-row>
     <validation-observer ref="formValidate" v-slot="{ validate, reset }">
       <form>
         <FirstSecondNames ref="FirstSecondNames"></FirstSecondNames>
         <Phones ref="Phones"></Phones>
         <BirthdayDatePicker ref="BirthdayDatePicker"></BirthdayDatePicker>
 
+        <NumberPassport ref="NumberPassport"></NumberPassport>
+
+        <v-row>
+          <v-col cols="12" md="4">
+            <validation-provider v-slot="{ errors }" :name="$t('t.Inn_code')" rules="numeric">
+              <v-text-field
+                class="in"
+                v-model="InnCode"
+                :label="$t('t.Inn_code')"
+                name="Inn_code"
+                prepend-icon="mdi-email"
+                type="number"
+                :error-messages="errors"
+              ></v-text-field>
+            </validation-provider>
+          </v-col>
+        </v-row>
         <v-row>
           <v-col cols="12" md="4">
             <validation-provider v-slot="{ errors }" :name="$t('t.Email')" rules="required|email">
@@ -40,7 +62,7 @@
         <!--        @blur="$v.select.$touch()"-->
         <!--      ></v-select>-->
 
-              <v-btn class="mr-4" @click="submitForm">submit</v-btn>
+              <v-btn color="btnCC white--text" class="mr-4" @click="submitForm">{{$t('t.Save')}}</v-btn>
         <!--      <v-btn @click="clear">clear</v-btn>-->
       </form>
     </validation-observer>
@@ -52,12 +74,14 @@
   import FirstSecondNames from "@/components/FirstSecondNames";
   import BirthdayDatePicker from "@/components/BirthdayDatePicker";
   import Phones from "@/components/Phones";
+  import NumberPassport from "@/components/NumberPassport";
 
   export default {
     components:{
       FirstSecondNames,
       BirthdayDatePicker,
       Phones,
+      NumberPassport,
     },
     name: "CreateDirector",
     data() {
@@ -65,6 +89,7 @@
         date: '',
         modal: false,
         email: '',
+        InnCode: '',
       }
     },
     methods: {
@@ -78,6 +103,8 @@
           'email': this.email,
           'phone': this.$refs.Phones.phone,
           'additional_phone': this.$refs.Phones.additionalPhone,
+          'inn_code': this.InnCode,
+          'numberPassport': this.$refs.NumberPassport.numberPassport
         };
         console.log(data);
         const valid = await this.$refs.formValidate.validate().then( (res) => res );
@@ -89,5 +116,15 @@
 </script>
 
 <style scoped>
-
+  ::v-deep input::-webkit-outer-spin-button,
+  ::v-deep input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  .v-input .v-input__control .v-input__slot .v-text-field__slot input::-webkit-outer-spin-button,
+  .v-input .v-input__control .v-input__slot .v-text-field__slot input::-webkit-inner-spin-button
+  {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 </style>
