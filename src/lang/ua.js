@@ -28,6 +28,7 @@ export default {
     Close: 'Закрити',
     Save: 'Зберегти',
     Submit: 'Відправити',
+    Create: 'Створити',
     OldNumberPassport: 'Старий зразок паспотру',
     NewNumberPassport: 'Новий зразок паспорту',
     NumberPassport: 'Номер паспорту',
