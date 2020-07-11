@@ -22,7 +22,7 @@ export default {
 
     // items
     const CreateDirectorAndOptions = {
-      title: 'Roots',
+      title: 'Directors',
       icon: 'mdi-account-multiple',
       submenu: [
         CreateDirector,

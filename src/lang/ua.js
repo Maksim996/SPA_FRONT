@@ -7,8 +7,8 @@ export default {
     // Name: 'Ім\'я',
     Email: 'Пошта',
     MyProfile: 'Мій профіль',
-    Root: 'Директор',
-    Roots: 'Директори',
+    Director: 'Директор',
+    Directors: 'Директори',
     CreateDirector: 'Створити директора',
     ListDirectors: 'Список директорів',
     ForgotPassword: 'Забув пароль',
@@ -33,6 +33,11 @@ export default {
     OldNumberPassport: 'Старий зразок паспотру',
     NewNumberPassport: 'Новий зразок паспорту',
     NumberPassport: 'Номер паспорту',
+    Search: 'Пошук',
+    FIO: 'ПІБ',
+    Actions: 'Дії',
+
+
   },
 
   veeValidate: {

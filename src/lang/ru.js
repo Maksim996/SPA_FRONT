@@ -7,8 +7,8 @@ export default {
     // Name: 'Имя',
     Email: 'Почта',
     MyProfile: 'Мой профиль',
-    Root: 'Директор',
-    Roots: 'Директоры',
+    Director: 'Директор',
+    Directors: 'Директоры',
     CreateDirector: 'Создать директора',
     ListDirectors: 'Список директоров',
     ForgotPassword: 'Забыл пароль',
@@ -33,6 +33,9 @@ export default {
     OldNumberPassport: 'Старый образец паспорта',
     NewNumberPassport: 'Новый образец паспорта',
     NumberPassport: 'Номер паспорта',
+    Search: 'Поиск',
+    FIO: 'ФИО',
+    Actions: 'Действие',
 
   },
 
