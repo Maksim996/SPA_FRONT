@@ -10,7 +10,7 @@
       <v-app-bar-nav-icon @click="() => drawer = !drawer"></v-app-bar-nav-icon>
       <v-img
         alt="Medical center"
-        class="shrink hidden-sm-and-down"
+        class="shrink hidden-sm-and-down ml-3"
         contain
         min-width="100"
         :src="logo"

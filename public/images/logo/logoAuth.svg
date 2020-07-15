@@ -1,0 +1,31 @@
+<svg  id="Группа_1" data-name="Группа 1" xmlns="http://www.w3.org/2000/svg" width="614" height="226" viewBox="0 0 614 226">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 72px;
+        text-anchor: middle;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        fill: rgb(123, 31, 162);
+      }
+
+      .cls-1, .cls-2 {
+        font-family: "Lucida Calligraphy";
+        font-style: italic;
+      }
+
+      .cls-2 {
+        font-size: 360px;
+      }
+
+      .cls-3 {
+        font-size: 400px;
+        font-family: Mistral;
+      }
+    </style>
+  </defs>
+  <text id="Medical_Center" data-name="Medical Center" class="cls-1" x="437" y="100">Medical<tspan x="437" dy="86.4">Center</tspan></text>
+  <text id="C" class="cls-2" transform="translate(-32.062 217.773) scale(0.806)">C</text>
+  <text id="M" class="cls-3" transform="translate(69.544 229.612) scale(0.806)">M</text>
+</svg>

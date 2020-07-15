@@ -1,13 +1,9 @@
 <template>
 
-  <v-row
-    class="purple lighten-4"
-  >
-    <v-container
-    >
+  <v-row>
+    <v-container>
       <v-row class="switch-type">
         <v-btn
-
           color="btnCC white--text"
           @click="switchType"
         >
@@ -104,7 +100,7 @@
     name: "Login",
     data() {
       return {
-        logo: process.env.VUE_APP_LOGO,
+        logo: process.env.VUE_APP_LOGO_AUTH,
         type: 'Personnel',
         switchName: '',
         phone: '',
@@ -117,9 +113,7 @@
     },
     methods: {
       async authUser() {
-        console.log(this.phone);
         const valid = await this.$refs.observer.validate('value').then((res) => res);
-        console.log(valid);
       },
       switchType() {
         switch (this.type) {
