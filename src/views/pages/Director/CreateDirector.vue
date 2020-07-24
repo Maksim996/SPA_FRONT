@@ -101,8 +101,8 @@
           'patronimic': this.$refs.FirstSecondNames.patronimic,
           'birthday': this.$refs.BirthdayDatePicker.date,
           'email': this.email,
-          'phone': this.$refs.Phones.phone,
-          'additional_phone': this.$refs.Phones.additionalPhone,
+          'phone': this.GlobalGetNumberPhone(this.$refs.Phones.phone),
+          'additional_phone': this.GlobalGetNumberPhone(this.$refs.Phones.additionalPhone),
           'inn_code': this.InnCode,
           'numberPassport': this.$refs.NumberPassport.numberPassport
         };

@@ -15,6 +15,9 @@ export default {
       else {
         this.$router.push({ name, query }).catch(()=>{});
       }
-    }
+    },
+    GlobalGetNumberPhone(number) {
+      return number.replace(/[^\d]/g, '');
+    },
   },
 }
