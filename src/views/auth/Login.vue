@@ -1,6 +1,6 @@
 <template>
 
-  <v-row>
+  <v-row v-if="!isLogged" class="fill-height h-100 w-100">
     <v-container>
       <v-row class="switch-type">
         <v-btn
@@ -96,17 +96,24 @@
 </template>
 
 <script>
+  import api from '@/api/index.js'
+
   export default {
     name: "Login",
     data() {
       return {
         logo: process.env.VUE_APP_LOGO_AUTH,
-        type: 'Personnel',
+        type: 'Patient',
         switchName: '',
         phone: '',
         email: '',
         password: '',
       }
+    },
+    computed: {
+      isLogged() {
+        return this.$store.getters['auth/isLogged'];
+      },
     },
     created() {
       this.switchType();
@@ -114,6 +121,30 @@
     methods: {
       async authUser() {
         const valid = await this.$refs.observer.validate('value').then((res) => res);
+
+        if (valid) {
+          try {
+            switch (this.type) {
+              case this.GlobalTypePersonnel:
+                try {
+                  await this.$store.dispatch('auth/login', {
+                    email: this.email,
+                    password: this.password,
+                  });
+                  this.$router.push({name: 'MyProfile'});
+                } catch (e) {
+                  console.log(e);
+                }
+                break;
+              case this.GlobalTypePatient:
+                break;
+            }
+          } catch (e) {
+            console.log(e);
+          }
+
+        }
+
       },
       switchType() {
         switch (this.type) {
