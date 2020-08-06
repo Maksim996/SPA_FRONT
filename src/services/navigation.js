@@ -29,20 +29,15 @@ export default {
         ListDirectors,
       ],
     };
-
     let rows = [];
     if (user) {
       rows.push(MyProfile);
 
       switch (user.role_id) {
-        case ROLES.ID.SuperRoot:
+        case ROLES.ID.Root:
           rows.push(
             CreateDirectorAndOptions
           );
-          break;
-
-        case ROLES.ID.Root:
-
           break;
 
         case ROLES.ID.Admin:

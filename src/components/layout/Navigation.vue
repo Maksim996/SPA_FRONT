@@ -68,6 +68,15 @@
           </v-list-item>
         </template>
       </template>
+      <!-- Logout -->
+      <v-list-item  link @click="logout" :disabled="isDisabledLogout">
+        <v-list-item-icon>
+          <v-icon> mdi-logout </v-icon>
+        </v-list-item-icon>
+        <v-list-item-content>
+          <v-list-item-title>{{ $t('t.Logout') }}</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
     </v-list>
   </v-navigation-drawer>
 </template>
@@ -84,18 +93,25 @@
     data: () => ({
       miniVariant: false,
       expandOnHover: false,
-      user: null,
+      isDisabledLogout: false,
     }),
-    created() {
-      this.user = {role_id: 1}
-    },
     computed: {
+      user() {
+        return this.$store.getters['auth/currentUser'];
+      },
       NavigationItems() {
         return Navigation.getItems(this.user);
       },
       drawer() {
         return this.$store.getters['drawer']
       }
+    },
+    methods: {
+      async logout() {
+        this.isDisabledLogout = true;
+        await this.$store.dispatch('auth/logout');
+        this.$router.push({ name: 'Login' });
+      },
     }
   }
 </script>

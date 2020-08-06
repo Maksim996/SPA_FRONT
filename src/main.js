@@ -11,6 +11,8 @@ import vueMaskOptions from "@/plugins/vueMask";
 import VueMask from "v-mask";
 import '@/plugins/sweetalert2';
 
+store.dispatch('auth/checkLogged');
+
 Vue.use(VueMask,
    vueMaskOptions
 );

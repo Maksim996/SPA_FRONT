@@ -16,16 +16,18 @@ api.interceptors.request.use(
     error => Promise.reject(error),
 );
 
-// api.interceptors.response.use(
-//   async resp => resp,
-//   async err => {
-//     if (err.response.data.message === 'Unauthenticated.') {
-//       await vuexStore.dispatch('auth/logout');
-//       router.push({ name: 'Login' });
-//     }
-//     return Promise.reject(err);
-//   },
-// );
+api.interceptors.response.use(
+  async resp => resp,
+  async err => {
+    if (err.response.data.message === 'Unauthenticated.') {
+      await vuexStore.dispatch('auth/logout');
+      router.push({ name: 'Login' });
+    }
+    return Promise.reject(err);
+  },
+);
+
+const setHeader = (name, value) => api.defaults.headers.common[name] = value;
 
 const get = async (resource, data = false) => data ? await api.get(`${resource}?${jsonToQuery(data)}`) : await api.get(resource);
 const post = async (resource, data) => await api.post(resource, data);
@@ -36,7 +38,6 @@ const show = async (resource, id = null) => await api.get(`${resource}/${id}`);
 const store = async (resource, data) => await api.post(resource, data);
 const update = async (resource, id, data) => await api.put(`${resource}/${id}`, data);
 const destroy = async (resource, id) => await api.delete(`${resource}/${id}`);
-
 export default {
   get,
   post,
@@ -46,4 +47,5 @@ export default {
   store,
   update,
   destroy,
+  setHeader,
 };

@@ -4,6 +4,7 @@ export default {
     Register: 'Регестрация',
     Password: 'Пароль',
     Login: 'Логин',
+    Logout: 'Выйти',
     // Name: 'Имя',
     Email: 'Почта',
     MyProfile: 'Мой профиль',
