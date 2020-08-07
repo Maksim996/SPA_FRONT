@@ -19,5 +19,9 @@ export default {
     GlobalGetNumberPhone(number) {
       return number.replace(/[^\d]/g, '');
     },
+    GlobalGetOldPassport(val, separator = '-') {
+      let arr = val.split('-');
+      return arr.shift() + '-' + arr.join('');
+    },
   },
 }
