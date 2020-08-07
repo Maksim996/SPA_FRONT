@@ -109,6 +109,7 @@
 
         const valid = await this.$refs.formValidate.validate().then( (res) => res ).catch((e)=> console.log('errCreateDirector',e));
 
+        this.GlobalMixinMessagesError('Oh, you broke my heart! Shame on you!');
 
         if (valid) {
           try {

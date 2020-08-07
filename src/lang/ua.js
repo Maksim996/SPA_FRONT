@@ -69,5 +69,11 @@ export default {
       "size": "Поле {_field_} повинно бути менше {size}KB",
       "phone": "{_field_} неправильний"
     }
+  },
+  m: {
+    Error: 'Помилка',
+    Warning: 'Попередження',
+    Info: 'Повідомлення',
+    Success: 'Успіх',
   }
 }

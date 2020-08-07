@@ -1,0 +1,6 @@
+.flashMessagePlugins {
+    z-index: 1000;
+}
+.flashMessagePlugins .mdi{
+    font-size: 40px;
+}
