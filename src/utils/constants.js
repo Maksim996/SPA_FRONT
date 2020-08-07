@@ -15,3 +15,12 @@ export const PAGINATION = {
 
 export const MASK_PHONE = '8 (###) ###-##-##';
 
+export const PASSPORT_TYPE = {
+  oldNumberPassport: 0,
+  newNumberPassport: 1,
+};
+
+export const SEX_TYPE = {
+  Man: 1,
+  Woman: 0,
+};

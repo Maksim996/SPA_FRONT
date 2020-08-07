@@ -7,12 +7,12 @@
             <v-radio color="btnCC"
                      class="mb-3"
                      :label="$t('t.OldNumberPassport')"
-                     value="oldNumberPassport"
+                     :value="PASSPORT_TYPE.oldNumberPassport"
             ></v-radio>
             <v-radio color="btnCC"
                      class="mb-3"
                      :label="$t('t.NewNumberPassport')"
-                     value="newNumberPassport"
+                     :value="PASSPORT_TYPE.newNumberPassport"
             ></v-radio>
           </v-radio-group>
         </v-col>
@@ -20,7 +20,7 @@
       <v-row>
         <v-col cols="12">
           <validation-provider
-            v-if="switchTypePassport === 'oldNumberPassport'"
+            v-if="switchTypePassport === PASSPORT_TYPE.oldNumberPassport"
             v-slot="{ errors }"
             :name="$t('t.NumberPassport')"
             rules="required"
@@ -37,7 +37,7 @@
             ></v-text-field>
           </validation-provider>
           <validation-provider
-            v-if="switchTypePassport === 'newNumberPassport'"
+            v-if="switchTypePassport === PASSPORT_TYPE.newNumberPassport"
             v-slot="{ errors }"
             :name="$t('t.NumberPassport')"
             rules="required"
@@ -57,10 +57,10 @@
       </v-row>
     </v-col>
     <v-col cols="12" md="4">
-      <template v-if="switchTypePassport === 'oldNumberPassport'">
+      <template v-if="switchTypePassport === PASSPORT_TYPE.oldNumberPassport">
         <v-img src="images/passports/oldPassport.jpg" aspect-ratio="3" contain></v-img>
       </template>
-      <template v-if="switchTypePassport === 'newNumberPassport'">
+      <template v-if="switchTypePassport === PASSPORT_TYPE.newNumberPassport">
         <v-img src="images/passports/newPassport.jpg" aspect-ratio="3" contain></v-img>
       </template>
     </v-col>
@@ -69,14 +69,17 @@
 
 
 <script>
+  import {PASSPORT_TYPE} from '@/utils/constants';
+
   export default {
     name: "NumberPassport",
     data() {
       return {
-        switchTypePassport: 'oldNumberPassport',
+        switchTypePassport: PASSPORT_TYPE.oldNumberPassport,
         oldNumberPassport: '',
         newNumberPassport: '',
         numberPassport: '',
+        PASSPORT_TYPE: PASSPORT_TYPE,
       }
     },
     watch: {
@@ -97,10 +100,10 @@
     methods: {
       setNumberPassport(val) {
         switch (val) {
-          case 'oldNumberPassport':
+          case PASSPORT_TYPE.oldNumberPassport:
             this.numberPassport = this.oldNumberPassport;
             break;
-          case 'newNumberPassport':
+          case PASSPORT_TYPE.newNumberPassport:
             this.numberPassport = this.newNumberPassport;
             break;
         }
