@@ -1,8 +1,8 @@
 <template>
   <v-app>
     <template v-if="isLogged">
-      <Navigation />
       <TopBar />
+      <Navigation />
     </template>
     <v-main>
       <v-container :fill-height="!isLogged" class="h-100 ">

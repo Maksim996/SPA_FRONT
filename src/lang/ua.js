@@ -40,7 +40,7 @@ export default {
     Actions: 'Дії',
     Man: 'Чоловік',
     Woman: 'Жінка',
-
+    GoToHome: 'Повернутися на головну',
   },
 
   veeValidate: {
@@ -78,7 +78,8 @@ export default {
     Info: 'Повідомлення',
     Success: 'Успіх',
     CreateUser: 'Створений користувач',
-    FormIsNotCompletedCorrectly: 'форма заповнена неправильно !',
-
+    FormIsNotCompletedCorrectly: 'Форма заповнена неправильно !',
+    PageDoesNotExist: 'Сторінка не існує',
+    '404': 'Упс, 404',
   }
 }
