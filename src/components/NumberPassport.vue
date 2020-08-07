@@ -108,7 +108,7 @@
       setNumberPassport(val) {
         switch (val) {
           case PASSPORT_TYPE.oldNumberPassport:
-            this.numberPassport = this.oldNumberPassport;
+            this.numberPassport = this.GlobalGetOldPassport(this.oldNumberPassport);
             break;
           case PASSPORT_TYPE.newNumberPassport:
             this.numberPassport = this.newNumberPassport;
