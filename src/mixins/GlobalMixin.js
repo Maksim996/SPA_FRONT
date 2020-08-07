@@ -1,3 +1,5 @@
+import { PASSPORT_TYPE } from '@/utils/constants'
+
 export default {
   data() {
     return {
@@ -19,9 +21,19 @@ export default {
     GlobalGetNumberPhone(number) {
       return number.replace(/[^\d]/g, '');
     },
-    GlobalGetOldPassport(val, separator = '-') {
-      let arr = val.split('-');
-      return arr.shift() + '-' + arr.join('');
+    GlobalGetPassport(type, val, separator = '-') {
+      let arr = val.split(separator);
+      let results = '';
+      switch (type) {
+        case PASSPORT_TYPE.oldNumberPassport:
+          results = (arr.shift() + '-' + arr.join(''));
+          break;
+        case PASSPORT_TYPE.newNumberPassport:
+          results = arr.join('');
+          break;
+      }
+
+      return results
     },
   },
 }
