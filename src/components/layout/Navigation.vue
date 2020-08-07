@@ -1,7 +1,6 @@
 <template>
   <v-navigation-drawer
     app
-    absolute
     :value="drawer"
     :mini-variant="miniVariant"
     :expand-on-hover="expandOnHover"
