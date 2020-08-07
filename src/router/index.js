@@ -81,7 +81,7 @@ const routes = [
     component: CreateDirector,
     beforeEnter: ifAuth,
     meta: {
-      accessIsAllowed: [ROLES.ID.Admin],
+      accessIsAllowed: [ROLES.ID.Root],
     },
   },
   {

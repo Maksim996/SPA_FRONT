@@ -106,9 +106,19 @@
           'inn_code': this.InnCode,
           'numberPassport': this.$refs.NumberPassport.numberPassport
         };
-        console.log(data);
-        const valid = await this.$refs.formValidate.validate().then( (res) => res );
-        console.log('valid',valid);
+
+        const valid = await this.$refs.formValidate.validate().then( (res) => res ).catch((e)=> console.log('errCreateDirector',e));
+
+
+        if (valid) {
+          try {
+            await api.post('api/director/create ', data);
+          } catch (e) {
+            console.log(e)
+          }
+          // const query = await api.post('api/director/create ', data);
+        }
+
         valid ? console.log('data',data) : console.log('no data')
       }
     }
