@@ -35,13 +35,13 @@
       md="4"
     >
       <validation-provider
-        v-slot="{ errors }" :name="$t('t.Patronimic')"
+        v-slot="{ errors }" :name="$t('t.Patronymic')"
         rules="required"
       >
         <v-text-field
-          v-model="patronimic"
+          v-model="patronymic"
           :error-messages="errors"
-          :label="$t('t.Patronimic')"
+          :label="$t('t.Patronymic')"
         ></v-text-field>
       </validation-provider>
     </v-col>
@@ -55,7 +55,7 @@
       return {
         firstName: '',
         secondName: '',
-        patronimic: '',
+        patronymic: '',
       }
     },
   }

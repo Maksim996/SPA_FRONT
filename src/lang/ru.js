@@ -18,10 +18,11 @@ export default {
     NumberMobPhone: 'Номер моб. телефону',
     FirstName: 'Имя',
     SecondName: 'Фамилия',
-    Patronimic: 'Отчество',
+    Patronymic: 'Отчество',
     Birthday: 'Дата рождения',
     Additional: 'Дополнительный',
     Passport: 'Паспорт',
+    PassportType: 'Тип паспорта',
     Inn_code: 'ИНН',
     Sex: 'Пол',
     Description: 'Описание',
@@ -37,7 +38,8 @@ export default {
     Search: 'Поиск',
     FIO: 'ФИО',
     Actions: 'Действие',
-
+    Man: 'Мужчина',
+    Woman: 'Женщина',
   },
 
   veeValidate: {
@@ -76,5 +78,7 @@ export default {
     Warning: 'Предупреждение',
     Info: 'Cообщение повідомлення',
     Success: 'Успех',
+    CreateUser: 'Создан пользователь',
+    FormIsNotCompletedCorrectly: 'Форма заполнена не правильно !',
   }
 }

@@ -13,7 +13,7 @@ export default {
       };
       this.flashMessagePlugin('error', message, options );
     },
-    GlobalMixinMessagesWarning() {
+    GlobalMixinMessagesWarning(message) {
       const options = {
         title: this.$t('m.Warning'),
         icon: 'mdi-exclamation',
@@ -21,7 +21,7 @@ export default {
       };
       this.flashMessagePlugin('warning', message, options );
     },
-    GlobalMixinMessagesInfo() {
+    GlobalMixinMessagesInfo(message) {
       const options = {
         title: this.$t('m.Info'),
         icon: 'mdi-information',
@@ -29,7 +29,7 @@ export default {
       };
       this.flashMessagePlugin('info', message, options );
     },
-    GlobalMixinMessagesSuccess() {
+    GlobalMixinMessagesSuccess(message) {
       const options = {
         title: this.$t('m.Success'),
         icon: 'mdi-check-circle',

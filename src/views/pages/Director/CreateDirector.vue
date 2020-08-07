@@ -10,12 +10,35 @@
         <FirstSecondNames ref="FirstSecondNames"></FirstSecondNames>
         <Phones ref="Phones"></Phones>
         <BirthdayDatePicker ref="BirthdayDatePicker"></BirthdayDatePicker>
+        <v-row>
+          <v-col cols="12">
+            <v-radio-group v-model="switchTypeSex" dense>
+              <template v-slot:label>
+                <div>{{$t('t.Sex')}}</div>
+              </template>
+              <div class="d-flex mt-3">
+                <v-radio color="btnCC"
+                         dense
+                         class="mb-3 mr-5"
+                         :label="$t('t.Man')"
+                         :value="SEX_TYPE.Man"
+                ></v-radio>
+                <v-radio color="btnCC"
+                         dense
+                         class="mb-3"
+                         :label="$t('t.Woman')"
+                         :value="SEX_TYPE.Woman"
+                ></v-radio>
+              </div>
 
+            </v-radio-group>
+          </v-col>
+        </v-row>
         <NumberPassport ref="NumberPassport"></NumberPassport>
 
         <v-row>
           <v-col cols="12" md="4">
-            <validation-provider v-slot="{ errors }" :name="$t('t.Inn_code')" rules="numeric">
+            <validation-provider v-slot="{ errors }" :name="$t('t.Inn_code')" rules="required|numeric">
               <v-text-field
                 class="in"
                 v-model="InnCode"
@@ -71,9 +94,11 @@
 </template>
 
 <script>
+  import api from '@/api/index';
   import FirstSecondNames from "@/components/FirstSecondNames";
   import BirthdayDatePicker from "@/components/BirthdayDatePicker";
   import Phones from "@/components/Phones";
+  import {SEX_TYPE} from '@/utils/constants';
   import NumberPassport from "@/components/NumberPassport";
 
   export default {
@@ -90,37 +115,43 @@
         modal: false,
         email: '',
         InnCode: '',
+        switchTypeSex: SEX_TYPE.Man,
+        SEX_TYPE: SEX_TYPE,
       }
     },
     methods: {
       async submitForm() {
 
-        const data = {
-          'first_name': this.$refs.FirstSecondNames.firstName,
-          'second_name': this.$refs.FirstSecondNames.secondName,
-          'patronimic': this.$refs.FirstSecondNames.patronimic,
-          'birthday': this.$refs.BirthdayDatePicker.date,
-          'email': this.email,
-          'phone': this.GlobalGetNumberPhone(this.$refs.Phones.phone),
-          'additional_phone': this.GlobalGetNumberPhone(this.$refs.Phones.additionalPhone),
-          'inn_code': this.InnCode,
-          'numberPassport': this.$refs.NumberPassport.numberPassport
-        };
-
-        const valid = await this.$refs.formValidate.validate().then( (res) => res ).catch((e)=> console.log('errCreateDirector',e));
-
-        this.GlobalMixinMessagesError('Oh, you broke my heart! Shame on you!');
+        const valid = await this.$refs.formValidate.validate()
+          .then( (res) => res )
+          .catch((e)=> this.GlobalMixinMessagesError(e));
 
         if (valid) {
           try {
+            const data = {
+              'first_name': this.$refs.FirstSecondNames.firstName,
+              'second_name': this.$refs.FirstSecondNames.secondName,
+              'patronymic': this.$refs.FirstSecondNames.patronymic,
+              'birthday': this.$refs.BirthdayDatePicker.date,
+              'sex' : this.switchTypeSex,
+              'email': this.email,
+              'phone': this.GlobalGetNumberPhone(this.$refs.Phones.phone),
+              'additional_phone': this.GlobalGetNumberPhone(this.$refs.Phones.additionalPhone),
+              'inn_code': this.InnCode,
+              'type_passport' : this.$refs.NumberPassport.switchTypePassport,
+              'passport': this.$refs.NumberPassport.numberPassport,
+              'image': null, // TODO: add image cropper
+            };
+            console.log('data',data)
             await api.post('api/director/create ', data);
+            this.GlobalMixinMessagesSuccess( this.$t('m.CreateUser') + ' ' + data.first_name + ' ' + data.second_name );
           } catch (e) {
-            console.log(e)
+            this.GlobalMixinMessagesError(e);
+            console.log('error', e)
           }
-          // const query = await api.post('api/director/create ', data);
+        } else {
+          this.GlobalMixinMessagesError(this.$t('m.FormIsNotCompletedCorrectly'));
         }
-
-        valid ? console.log('data',data) : console.log('no data')
       }
     }
   }

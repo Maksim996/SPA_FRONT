@@ -3,17 +3,24 @@
     <v-col cols="12" md="4">
       <v-row>
         <v-col cols="12">
-          <v-radio-group v-model="switchTypePassport" row>
-            <v-radio color="btnCC"
-                     class="mb-3"
-                     :label="$t('t.OldNumberPassport')"
-                     :value="PASSPORT_TYPE.oldNumberPassport"
-            ></v-radio>
-            <v-radio color="btnCC"
-                     class="mb-3"
-                     :label="$t('t.NewNumberPassport')"
-                     :value="PASSPORT_TYPE.newNumberPassport"
-            ></v-radio>
+          <v-radio-group v-model="switchTypePassport" dense>
+            <template v-slot:label>
+              <div>{{$t('t.PassportType')}}</div>
+            </template>
+            <div class="d-flex mt-3">
+              <v-radio color="btnCC"
+                       class="mb-3 mr-3"
+                       dense
+                       :label="$t('t.OldNumberPassport')"
+                       :value="PASSPORT_TYPE.oldNumberPassport"
+              ></v-radio>
+              <v-radio color="btnCC"
+                       class="mb-3"
+                       dense
+                       :label="$t('t.NewNumberPassport')"
+                       :value="PASSPORT_TYPE.newNumberPassport"
+              ></v-radio>
+            </div>
           </v-radio-group>
         </v-col>
       </v-row>
