@@ -8,19 +8,21 @@
       <v-col>
 
         <div class="title_error primary--text">
-          <span class="number_error">4</span>
+          <span class="number_error headerCC--text">4</span>
           <v-icon class="icon_error">mdi mdi-alert-circle-outline</v-icon>
-          <span class="number_error">4</span>
+          <span class="number_error headerCC--text">4</span>
         </div>
-        <p class="text_error">{{$t('m.PageDoesNotExist')}}</p>
+        <div class="d-flex flex-column align-center">
+          <p class="text_error">{{$t('m.PageDoesNotExist')}}</p>
 
-        <v-btn
-          to="/"
-          color="primary"
-          outlined
-        >
-          {{$t('t.GoToHome')}}
-        </v-btn>
+          <v-btn
+            to="/"
+            color="headerCC"
+            outlined
+          >
+            {{$t('t.GoToHome')}}
+          </v-btn>
+        </div>
       </v-col>
 <!--    </v-row>-->
 <!--  </v-container>-->

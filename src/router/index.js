@@ -67,6 +67,15 @@ const routes = [
     component: Register
   },
   {
+    path: '/',
+    name: 'Home',
+    beforeEnter: ifAuth,
+    component: Home,
+    meta: {
+      accessIsAllowed: allRoles(),
+    },
+  },
+  {
     path: '/my_profile',
     name: 'MyProfile',
     component: MyProfile,

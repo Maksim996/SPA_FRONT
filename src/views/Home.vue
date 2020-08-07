@@ -1,52 +1,11 @@
 <template>
-  <div class="home">
-    <v-container
-            fill-height
-            >
-      <v-row
-              align="center"
-              justify="center"
-              style="height:90vh"
-      >
-        <v-col  lg="3" md="12">
-          <v-row justify="center">
-            <v-btn
-                    x-large
-                    color="success"
-                    dark
-                    to="/login"
-            >
-              <span class="mr-2">{{$t('t.loginIn')}}</span>
-              <v-icon>mdi-login</v-icon>
-            </v-btn>
-          </v-row>
-        </v-col>
-        <v-col lg="3" md="12" >
-          <v-row justify="center">
-            <v-btn  x-large
-                    color="primary"
-                    dark
-                    to="/register"
-            >
-              <span class="mr-2">{{$t('t.register')}}</span>
-              <v-icon>mdi-account-multiple-plus</v-icon>
-            </v-btn>
-          </v-row>
-        </v-col>
-        <v-col lg="3" md="12" >
-          <v-row justify="center">
-            <v-btn  x-large
-                    color="purple"
-                    dark
-                    to="/"
-            >
-              <span class="mr-2">Dashboard</span>
-              <v-icon>mdi-view-dashboard-outline</v-icon>
-            </v-btn>
-          </v-row>
-        </v-col>
-      </v-row>
-    </v-container>
+  <div class="d-flex flex-column align-center">
+    <div class="text-h3 mt-4 text-center headerCC--text">
+      Добро пожаловать
+    </div>
+    <v-col class="logo">
+      <v-img v-if="logo" :src="logo"></v-img>
+    </v-col>
   </div>
 </template>
 
@@ -55,10 +14,24 @@
 
 export default {
   name: 'Home',
+  data: () => ({
+    logo: '',
+  }),
+  mounted() {
+    this.logo = process.env.VUE_APP_LOGO_AUTH
+  }
 }
 </script>
 
 <style scoped>
+  .logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    opacity: .05;
+    width: 70%;
+  }
   .home {
     height: 100%;
     background: linear-gradient(254deg, #0083ee, #71befd, #fd9771, #f05d27, #ffc40a);

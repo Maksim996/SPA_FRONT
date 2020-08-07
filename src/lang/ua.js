@@ -41,6 +41,7 @@ export default {
     Man: 'Чоловік',
     Woman: 'Жінка',
     GoToHome: 'Повернутися на головну',
+    Welcome: 'Ласкаво просимо',
   },
 
   veeValidate: {
