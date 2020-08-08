@@ -21,9 +21,10 @@ export default {
     Patronymic: 'Отчество',
     Birthday: 'Дата рождения',
     Additional: 'Дополнительный',
+    AdditionalPhone: 'Дополнительный номер',
     Passport: 'Паспорт',
     PassportType: 'Тип паспорта',
-    Inn_code: 'ИНН',
+    InnCode: 'ИНН',
     Sex: 'Пол',
     Description: 'Описание',
     Image: 'Изображение',
@@ -42,6 +43,8 @@ export default {
     Woman: 'Женщина',
     GoToHome: 'Вернутся на главную',
     Welcome: 'Добро пожаловать',
+    GeneralInfo: 'Общая информация',
+    Settings: 'Настройки',
   },
 
   veeValidate: {
