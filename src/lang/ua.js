@@ -70,7 +70,9 @@ export default {
       "required": "Поле {_field_} повинно мати значення",
       "required_if": "Поле {_field_} повинно мати значення",
       "size": "Поле {_field_} повинно бути менше {size}KB",
-      "phone": "{_field_} неправильний"
+      "phone": "{_field_} неправильний",
+      "maskLength": "Поле {_field_} повинно мати {length} символів",
+
     }
   },
   m: {

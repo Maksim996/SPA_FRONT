@@ -21,13 +21,14 @@ export default {
     GlobalGetNumberPhone(number) {
       return number.replace(/[^\d]/g, '');
     },
-    GlobalGetPassport(type, val, separator = '-') {
+    GlobalGetSymbols(val, type = 'OnlySymbols', separator = '-') {
       let arr = val.split(separator);
       let results = '';
       switch (type) {
         case PASSPORT_TYPE.oldNumberPassport:
           results = (arr.shift() + '-' + arr.join(''));
           break;
+        case 'OnlySymbols':
         case PASSPORT_TYPE.newNumberPassport:
           results = arr.join('');
           break;

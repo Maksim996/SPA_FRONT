@@ -72,7 +72,8 @@ export default {
       "required": "Поле {_field_} обязательно для заполнения",
       "required_if": "Поле {_field_} обязательно для заполнения",
       "size": "Поле {_field_} должно быть меньше, чем {size}KB",
-      "phone": "{_field_} непавильный"
+      "phone": "{_field_} непавильный",
+      "maskLength": "Поле {_field_} должно иметь {length} символов",
     }
   },
   m: {
