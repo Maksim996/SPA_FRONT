@@ -4,7 +4,6 @@ import {extend, localize, VeeValidate, ValidationProvider, ValidationObserver } 
 import PhoneNumber from 'awesome-phonenumber'
 import vee_ru from '@/lang/ru';
 import vee_ua from '@/lang/ua';
-import  GlobalMixin  from "@/mixins/GlobalMixin";
 
 const ru = vee_ru['veeValidate'],
       ua = vee_ua['veeValidate'];
@@ -33,9 +32,9 @@ extend('phone', {
 });
 
 extend('maskLength', {
-  params: ['length'],
-  validate: (value, {length}) => {
-    const passport = GlobalMixin.methods.GlobalGetSymbols(value);
+  params: ['length', 'separator'],
+  validate: (value, {length, separator}) => {
+    const passport = value.split(separator ? separator : '-' ).join('');
     return  passport.length >= Number(length) ? true : false;
   },
 });
