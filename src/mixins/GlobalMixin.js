@@ -1,4 +1,4 @@
-import { PASSPORT_TYPE } from '@/utils/constants'
+import { PASSPORT_TYPE, SEX_TYPE } from '@/utils/constants'
 
 export default {
   data() {
@@ -36,5 +36,23 @@ export default {
 
       return results
     },
+    GlobalArrayFlip(json){
+      var ret = {};
+      for(var key in json){
+        ret[json[key]] = key;
+      }
+      return ret;
+    },
+
+    //First letter string uppercase
+    // GlobalUcFirst(str) {
+    //     if (!str) return str;
+    //     return str[0].toUpperCase() + str.slice(1);
+    // }
+
+    GlobalChangeSex(type) {
+      const sex = this.GlobalArrayFlip(SEX_TYPE);
+      return sex[type]
+    }
   },
 }
