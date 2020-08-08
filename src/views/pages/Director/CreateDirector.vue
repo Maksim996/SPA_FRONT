@@ -36,21 +36,8 @@
         </v-row>
         <NumberPassport ref="NumberPassport"></NumberPassport>
 
-        <v-row>
-          <v-col cols="12" md="4">
-            <validation-provider v-slot="{ errors }" :name="$t('t.Inn_code')" rules="required|numeric">
-              <v-text-field
-                class="in"
-                v-model="InnCode"
-                :label="$t('t.Inn_code')"
-                name="Inn_code"
-                prepend-icon="mdi-email"
-                type="number"
-                :error-messages="errors"
-              ></v-text-field>
-            </validation-provider>
-          </v-col>
-        </v-row>
+        <InnCode ref="InnCode"></InnCode>
+
         <v-row>
           <v-col cols="12" md="4">
             <validation-provider v-slot="{ errors }" :name="$t('t.Email')" rules="required|email">
@@ -100,6 +87,7 @@
   import Phones from "@/components/Phones";
   import {SEX_TYPE} from '@/utils/constants';
   import NumberPassport from "@/components/NumberPassport";
+  import InnCode from "@/components/InnCode";
 
   export default {
     components:{
@@ -107,6 +95,7 @@
       BirthdayDatePicker,
       Phones,
       NumberPassport,
+      InnCode,
     },
     name: "CreateDirector",
     data() {
@@ -114,7 +103,6 @@
         date: '',
         modal: false,
         email: '',
-        InnCode: '',
         switchTypeSex: SEX_TYPE.Man,
         SEX_TYPE: SEX_TYPE,
       }

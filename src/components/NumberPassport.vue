@@ -27,10 +27,10 @@
       <v-row>
         <v-col cols="12">
           <validation-provider
-            v-if="switchTypePassport === PASSPORT_TYPE.oldNumberPassport"
+            v-show="showOldPassport"
             v-slot="{ errors }"
             :name="$t('t.NumberPassport')"
-            rules="required"
+            rules="required|maskLength:8"
           >
             <v-text-field
               v-model="oldNumberPassport"
@@ -38,16 +38,17 @@
               name="NumberPassport"
               prepend-icon="mdi-passport"
               type="text"
+              :disabled="!showOldPassport"
               :error-messages="errors"
               v-mask="`ЯЯ-##-##-##`"
               placeholder="MB-00-00-00"
             ></v-text-field>
           </validation-provider>
           <validation-provider
-            v-if="switchTypePassport === PASSPORT_TYPE.newNumberPassport"
+            v-show="showNewPassport"
             v-slot="{ errors }"
             :name="$t('t.NumberPassport')"
-            rules="required"
+            rules="required|maskLength:9"
           >
             <v-text-field
               v-model="newNumberPassport"
@@ -55,6 +56,7 @@
               name="NumberPassport"
               prepend-icon="mdi-passport-biometric"
               type="text"
+              :disabled="!showNewPassport"
               :error-messages="errors"
               v-mask="`###-###-###`"
               placeholder="000-000-000"
@@ -64,10 +66,10 @@
       </v-row>
     </v-col>
     <v-col cols="12" md="4">
-      <template v-if="switchTypePassport === PASSPORT_TYPE.oldNumberPassport">
+      <template v-if="showOldPassport">
         <v-img src="images/passports/oldPassport.jpg" aspect-ratio="3" contain></v-img>
       </template>
-      <template v-if="switchTypePassport === PASSPORT_TYPE.newNumberPassport">
+      <template v-if="showNewPassport">
         <v-img src="images/passports/newPassport.jpg" aspect-ratio="3" contain></v-img>
       </template>
     </v-col>
@@ -87,6 +89,8 @@
         newNumberPassport: '',
         numberPassport: '',
         PASSPORT_TYPE: PASSPORT_TYPE,
+        showOldPassport: true,
+        showNewPassport: false
       }
     },
     watch: {
@@ -108,10 +112,14 @@
       setNumberPassport(val) {
         switch (val) {
           case PASSPORT_TYPE.oldNumberPassport:
-            this.numberPassport = this.GlobalGetPassport(PASSPORT_TYPE.oldNumberPassport, this.oldNumberPassport);
+            this.showOldPassport = true;
+            this.showNewPassport = false;
+            this.numberPassport = this.GlobalGetSymbols(this.oldNumberPassport, PASSPORT_TYPE.oldNumberPassport);
             break;
           case PASSPORT_TYPE.newNumberPassport:
-            this.numberPassport = this.GlobalGetPassport(PASSPORT_TYPE.newNumberPassport, this.newNumberPassport);
+            this.showOldPassport = false;
+            this.showNewPassport = true;
+            this.numberPassport = this.GlobalGetSymbols(this.newNumberPassport, PASSPORT_TYPE.newNumberPassport);
             break;
         }
       }
