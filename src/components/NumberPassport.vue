@@ -30,7 +30,7 @@
             v-show="showOldPassport"
             v-slot="{ errors }"
             :name="$t('t.NumberPassport')"
-            rules="required|maskLength:8"
+            :rules="{required: showOldPassport, maskLength: {length: 8, separator: '-'} }"
           >
             <v-text-field
               v-model="oldNumberPassport"
@@ -48,7 +48,7 @@
             v-show="showNewPassport"
             v-slot="{ errors }"
             :name="$t('t.NumberPassport')"
-            rules="required|maskLength:9"
+            :rules="{required: showOldPassport, maskLength: {length: 9, separator: '-'} }"
           >
             <v-text-field
               v-model="newNumberPassport"
