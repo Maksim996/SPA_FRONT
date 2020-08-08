@@ -15,7 +15,7 @@
         >
           <template v-slot:activator="{ on, attrs }">
             <v-text-field
-              v-model="date"
+              v-model="computedDateFormatted"
               :label="$t('t.Birthday')"
               prepend-icon="mdi-calendar-month"
               :error-messages="errors[0]"
@@ -46,19 +46,33 @@
       return {
         date: null,
         openDialog: false,
-        locale: process.env.VUE_APP_LOCALE
+        locale: process.env.VUE_APP_LOCALE,
+        dateFormatted: this.formatDate(new Date().toISOString().substr(0, 10))
       }
     },
     watch: {
+      date () {
+        this.dateFormatted = this.formatDate(this.date)
+      },
       openDialog() {
         setTimeout(() => (this.$refs.BirthdayPicker.activePicker = 'YEAR'))
+      },
+    },
+    computed: {
+      computedDateFormatted () {
+        return this.formatDate(this.date)
       },
     },
     methods: {
       save(date) {
         this.$refs.dialog.save(date)
       },
+      formatDate (date) {
+        if (!date) return null;
 
+        const [year, month, day] = date.split('-');
+        return `${day}.${month}.${year}`
+      },
     },
   }
 </script>
