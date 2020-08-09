@@ -21,6 +21,18 @@ export default {
     GlobalGetNumberPhone(number) {
       return number.replace(/[^\d]/g, '');
     },
+    GlobalGetOnlyNumberPhone(number, mask = [2,3,2,2], regExp = /^380/) {
+      let n = String(number).replace(regExp,'');
+      let num = '';
+      mask.map((el,index)=> {
+        let char = '';
+        for(let i = 0; i < el; i++ ) char += n[i];
+        n = n.slice(el, n.length);
+        num += char;
+        num += (index < mask.length - 1 ) ? '-': ''
+      })
+      return num
+    },
     GlobalGetSymbols(val, type = 'OnlySymbols', separator = '-') {
       let arr = val.split(separator);
       let results = '';

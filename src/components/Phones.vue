@@ -49,8 +49,18 @@
     name: "Phones",
     data() {
       return {
-        phone: '',
-        additionalPhone: '',
+        phone: this.phoneProp,
+        additionalPhone: this.additionalPhoneProp,
+      }
+    },
+    props: {
+      phoneProp: {
+        type: String,
+        default: '',
+      },
+      additionalPhoneProp: {
+        type: String,
+        default: '',
       }
     }
   }
