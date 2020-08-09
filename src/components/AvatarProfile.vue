@@ -24,7 +24,7 @@
           dark
         >
           <v-list-item-content>
-            <v-list-item-title class="title text-h5">{{first_name}} {{second_name}} {{patronymic}}</v-list-item-title>
+            <v-list-item-title class="title text-h5">{{second_name}} {{first_name}} {{patronymic}}</v-list-item-title>
             <v-list-item-subtitle class="white--text text-h6">{{rules}} {{avatar}}</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
