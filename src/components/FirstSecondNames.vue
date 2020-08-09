@@ -53,11 +53,26 @@
     name: "FirstSecondNames",
     data () {
       return {
-        firstName: '',
-        secondName: '',
-        patronymic: '',
+        firstName: this.firstNameProp,
+        secondName: this.secondNameProp,
+        patronymic: this.patronymicProp,
       }
     },
+    props: {
+      firstNameProp: {
+        type: String,
+        default: '',
+      },
+      secondNameProp: {
+        type: String,
+        default: '',
+      },
+      patronymicProp: {
+        type: String,
+        default: '',
+      },
+    },
+
   }
 </script>
 
