@@ -44,10 +44,16 @@
     name: "BirthdayDatePicker",
     data() {
       return {
-        date: null,
+        date: this.dateProp,
         openDialog: false,
         locale: process.env.VUE_APP_LOCALE,
         dateFormatted: this.formatDate(new Date().toISOString().substr(0, 10))
+      }
+    },
+    props: {
+      dateProp: {
+        type: String,
+        default: null,
       }
     },
     watch: {
