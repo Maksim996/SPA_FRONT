@@ -1,6 +1,6 @@
 <template>
   <v-row>
-    <v-col cols="12" md="4">
+    <v-col cols="12" md="6">
       <v-row>
         <v-col cols="12">
           <v-radio-group v-model="switchTypePassport" dense>
@@ -25,7 +25,7 @@
         </v-col>
       </v-row>
       <v-row>
-        <v-col cols="12">
+        <v-col cols="8">
           <validation-provider
             v-show="showOldPassport"
             v-slot="{ errors }"
@@ -65,7 +65,7 @@
         </v-col>
       </v-row>
     </v-col>
-    <v-col cols="12" md="4">
+    <v-col cols="6" lg="4">
       <template v-if="showOldPassport">
         <v-img src="images/passports/oldPassport.jpg" aspect-ratio="3" contain></v-img>
       </template>
@@ -84,13 +84,23 @@
     name: "NumberPassport",
     data() {
       return {
-        switchTypePassport: PASSPORT_TYPE.oldNumberPassport,
-        oldNumberPassport: '',
-        newNumberPassport: '',
+        switchTypePassport: this.passportTypeProp,
+        oldNumberPassport: this.passportTypeProp === PASSPORT_TYPE.oldNumberPassport ? this.passportProp :'',
+        newNumberPassport: this.passportTypeProp === PASSPORT_TYPE.newNumberPassport ? this.passportProp :'',
         numberPassport: '',
         PASSPORT_TYPE: PASSPORT_TYPE,
         showOldPassport: true,
         showNewPassport: false
+      }
+    },
+    props: {
+      passportTypeProp: {
+        type: Number,
+        default: PASSPORT_TYPE.oldNumberPassport,
+      },
+      passportProp: {
+        type: String,
+        default: '',
       }
     },
     watch: {
