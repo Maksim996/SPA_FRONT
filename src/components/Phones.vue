@@ -49,8 +49,8 @@
     name: "Phones",
     data() {
       return {
-        phone: this.phoneProp,
-        additionalPhone: this.additionalPhoneProp,
+        phone: this.GlobalGetOnlyNumberPhone(this.phoneProp),
+        additionalPhone: this.GlobalGetOnlyNumberPhone(this.additionalPhoneProp),
       }
     },
     props: {
