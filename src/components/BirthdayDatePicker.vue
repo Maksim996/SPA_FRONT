@@ -47,7 +47,7 @@
         date: this.dateProp,
         openDialog: false,
         locale: process.env.VUE_APP_LOCALE,
-        dateFormatted: this.formatDate(new Date().toISOString().substr(0, 10))
+        dateFormatted: this.GlobalFormatDateDMY(new Date().toISOString().substr(0, 10))
       }
     },
     props: {
@@ -58,7 +58,7 @@
     },
     watch: {
       date () {
-        this.dateFormatted = this.formatDate(this.date)
+        this.dateFormatted = this.GlobalFormatDateDMY(this.date)
       },
       openDialog() {
         setTimeout(() => (this.$refs.BirthdayPicker.activePicker = 'YEAR'))
@@ -66,18 +66,12 @@
     },
     computed: {
       computedDateFormatted () {
-        return this.formatDate(this.date)
+        return this.GlobalFormatDateDMY(this.date)
       },
     },
     methods: {
       save(date) {
         this.$refs.dialog.save(date)
-      },
-      formatDate (date) {
-        if (!date) return null;
-
-        const [year, month, day] = date.split('-');
-        return `${day}.${month}.${year}`
       },
     },
   }

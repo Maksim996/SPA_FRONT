@@ -87,7 +87,7 @@
               'additional_phone': this.GlobalGetNumberPhone(this.$refs.Phones.additionalPhone),
               'inn_code': this.GlobalGetSymbols(this.$refs.InnCode.innCode, 'OnlySymbols', '-'),
               'type_passport' : this.$refs.NumberPassport.switchTypePassport,
-              'passport': this.$refs.NumberPassport.numberPassport,
+              'passport': this.GlobalGetSymbols(this.$refs.NumberPassport.numberPassport, 'OnlySymbol'),
               'image': null, // TODO: add image cropper
             };
             // const data = {

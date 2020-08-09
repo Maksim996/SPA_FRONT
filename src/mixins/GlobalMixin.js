@@ -21,7 +21,7 @@ export default {
     GlobalGetNumberPhone(number) {
       return number.replace(/[^\d]/g, '');
     },
-    GlobalGetOnlyNumberPhone(number, mask = [2,3,2,2], regExp = /^380/) {
+    GlobalCustomFormatStr(number, mask = [2,3,2,2], regExp = /^380/, separator = '-') {
       let num = '';
       if (number !== null && number !== '') {
         let n = String(number).replace(regExp,'');
@@ -30,7 +30,7 @@ export default {
           for(let i = 0; i < el; i++ ) char += n[i];
           n = n.slice(el, n.length);
           num += char;
-          num += (index < mask.length - 1 ) ? '-': ''
+          num += (index < mask.length - 1 ) ? separator: ''
         })
       }
       return num
@@ -67,6 +67,12 @@ export default {
     GlobalChangeSex(type) {
       const sex = this.GlobalArrayFlip(SEX_TYPE);
       return sex[type]
-    }
+    },
+    GlobalFormatDateDMY (date) {
+      if (!date) return null;
+
+      const [year, month, day] = date.split('-');
+      return `${day}.${month}.${year}`
+    },
   },
 }

@@ -161,14 +161,14 @@ export default {
         "first_name": "Max",
         "second_name": "ovr",
         "patronymic": "ser",
-        "birthday": "1950-01-01",
+        "birthday": this.GlobalFormatDateDMY("1950-01-01"),
         "sex": 0,
         "email": "admin@admin.ru",
-        "phone": '380503800011',
+        "phone": this.GlobalCustomFormatStr('380503800011', [2,3,3,2,2], ''),
         "additional_phone": '',
-        "inn_code": "1212102310",
+        "inn_code": this.GlobalCustomFormatStr("1212102310",[3,3,4],''),
         "type_passport": 0,
-        "passport": "ВЦ-221122",
+        "passport": "ВЦ221122",
         "image": null
       };
       this.user = data;
@@ -213,7 +213,7 @@ export default {
             'additional_phone': this.GlobalGetNumberPhone(this.$refs.Phones.additionalPhone),
             'inn_code': this.$refs.InnCode.innCode,
             'type_passport': this.$refs.NumberPassport.switchTypePassport,
-            'passport': this.$refs.NumberPassport.numberPassport,
+            'passport': this.GlobalGetSymbols(this.$refs.NumberPassport.numberPassport, 'OnlySymbol'),
             'image': null, // TODO: add image cropper
           };
 
