@@ -45,6 +45,13 @@ export default {
     Welcome: 'Ласкаво просимо',
     GeneralInfo: 'Загальна інформація',
     Settings: 'Налаштування',
+    ChangePassword: 'Змінити пароль',
+    EditGeneralInfo: 'Редагувати загальну інформацію',
+    ChangeAvatar: 'Змінити фото профілю',
+    ConfirmPassword: 'Підтвердження пароля',
+    NewPassword: 'Новий пароль',
+    CurrentPassword: 'Поточний пароль',
+    Clear: 'Очистити',
   },
 
   veeValidate: {
@@ -87,5 +94,6 @@ export default {
     FormIsNotCompletedCorrectly: 'Форма заповнена неправильно !',
     PageDoesNotExist: 'Сторінка не існує',
     '404': 'Упс, 404',
+    PasswordChangedSuccessfully: 'Пароль успішно змінений'
   }
 }

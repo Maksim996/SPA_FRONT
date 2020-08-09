@@ -45,6 +45,14 @@ export default {
     Welcome: 'Добро пожаловать',
     GeneralInfo: 'Общая информация',
     Settings: 'Настройки',
+    ChangePassword: 'Изменить пароль',
+    EditGeneralInfo: 'Редактировать общую информацию',
+    ChangeAvatar: 'Изменить фото профиля',
+    ConfirmPassword: 'Подтверждение пароля',
+    NewPassword: 'Новый пароль',
+    CurrentPassword: 'Текущий пароль',
+    Clear: 'Очистить'
+
   },
 
   veeValidate: {
@@ -55,7 +63,7 @@ export default {
       "alpha_num": "Поле {_field_} может содержать только буквы и цифры",
       "alpha_spaces": "Поле {_field_} может содержать только буквы и пробелы",
       "between": "Поле {_field_} должно быть между {min} и {max}",
-      "confirmed": "Поле {_field_} не совпадает Подтверждение",
+      "confirmed": "Поле {_field_} не совпадает  с подтверждением",
       "digits": "Поле {_field_} должно быть числовым и точно содержать {length} цифры",
       "dimensions": "Поле {_field_} должно быть {width} пикселей на {height} пикселей",
       "email": "Поле {_field_} должно быть действительным электронным адресом",
@@ -88,5 +96,6 @@ export default {
     FormIsNotCompletedCorrectly: 'Форма заполнена не правильно !',
     PageDoesNotExist: 'Страница не существует',
     '404': 'Упс, 404',
+    PasswordChangedSuccessfully: 'Пароль успешно изменен',
   }
 }
