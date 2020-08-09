@@ -7,36 +7,13 @@
     </v-row>
     <validation-observer ref="formValidate" v-slot="{ validate, reset }">
       <form>
-        <FirstSecondNames ref="FirstSecondNames"></FirstSecondNames>
-        <Phones ref="Phones"></Phones>
-        <BirthdayDatePicker ref="BirthdayDatePicker"></BirthdayDatePicker>
-        <v-row>
-          <v-col cols="12">
-            <v-radio-group v-model="switchTypeSex" dense>
-              <template v-slot:label>
-                <div>{{$t('t.Sex')}}</div>
-              </template>
-              <div class="d-flex mt-3">
-                <v-radio color="btnCC"
-                         dense
-                         class="mb-3 mr-5"
-                         :label="$t('t.Man')"
-                         :value="SEX_TYPE.Man"
-                ></v-radio>
-                <v-radio color="btnCC"
-                         dense
-                         class="mb-3"
-                         :label="$t('t.Woman')"
-                         :value="SEX_TYPE.Woman"
-                ></v-radio>
-              </div>
+        <FirstSecondNames ref="FirstSecondNames" />
+        <Phones ref="Phones" />
+        <BirthdayDatePicker ref="BirthdayDatePicker" />
+        <SexType ref="SexType" />
+        <NumberPassport ref="NumberPassport" />
 
-            </v-radio-group>
-          </v-col>
-        </v-row>
-        <NumberPassport ref="NumberPassport"></NumberPassport>
-
-        <InnCode ref="InnCode"></InnCode>
+        <InnCode ref="InnCode" />
 
         <v-row>
           <v-col cols="12" md="4">
@@ -52,28 +29,9 @@
             </validation-provider>
           </v-col>
         </v-row>
-
-
-        <!--      <v-text-field-->
-        <!--        v-model="email"-->
-        <!--        :error-messages="emailErrors"-->
-        <!--        label="E-mail"-->
-        <!--        required-->
-        <!--        @input="$v.email.$touch()"-->
-        <!--        @blur="$v.email.$touch()"-->
-        <!--      ></v-text-field>-->
-        <!--      <v-select-->
-        <!--        v-model="select"-->
-        <!--        :items="items"-->
-        <!--        :error-messages="selectErrors"-->
-        <!--        label="Item"-->
-        <!--        required-->
-        <!--        @change="$v.select.$touch()"-->
-        <!--        @blur="$v.select.$touch()"-->
-        <!--      ></v-select>-->
-
-              <v-btn color="btnCC white--text" class="mr-4" @click="submitForm">{{$t('t.Create')}}</v-btn>
-        <!--      <v-btn @click="clear">clear</v-btn>-->
+        <div class="mt-3">
+          <v-btn color="btnCC white--text" class="mr-4" @click="submitForm">{{$t('t.Create')}}</v-btn>
+        </div>
       </form>
     </validation-observer>
   </v-container>
@@ -82,12 +40,13 @@
 
 <script>
   import api from '@/api/index';
-  import FirstSecondNames from "@/components/FirstSecondNames";
-  import BirthdayDatePicker from "@/components/BirthdayDatePicker";
-  import Phones from "@/components/Phones";
+  import FirstSecondNames from '@/components/FirstSecondNames';
+  import BirthdayDatePicker from '@/components/BirthdayDatePicker';
+  import Phones from '@/components/Phones';
   import {SEX_TYPE} from '@/utils/constants';
-  import NumberPassport from "@/components/NumberPassport";
-  import InnCode from "@/components/InnCode";
+  import NumberPassport from '@/components/NumberPassport';
+  import InnCode from '@/components/InnCode';
+  import SexType from '@/components/SexType'
 
   export default {
     components:{
@@ -96,6 +55,7 @@
       Phones,
       NumberPassport,
       InnCode,
+      SexType,
     },
     name: "CreateDirector",
     data() {
@@ -120,8 +80,9 @@
               'first_name': this.$refs.FirstSecondNames.firstName,
               'second_name': this.$refs.FirstSecondNames.secondName,
               'patronymic': this.$refs.FirstSecondNames.patronymic,
-              'birthday': this.$refs.BirthdayDatePicker.date,
-              'sex' : this.switchTypeSex,
+              // 'birthday': this.$refs.BirthdayDatePicker.date,
+              'birthday': '10.02.2010',
+              'sex' : this.$refs.SexType.switchTypeSex,
               'email': this.email,
               'phone': this.GlobalGetNumberPhone(this.$refs.Phones.phone),
               'additional_phone': this.GlobalGetNumberPhone(this.$refs.Phones.additionalPhone),
@@ -130,6 +91,20 @@
               'passport': this.$refs.NumberPassport.numberPassport,
               'image': null, // TODO: add image cropper
             };
+            // const data = {
+            //   "first_name": "Max",
+            //   "second_name": "ovr",
+            //   "patronymic": "ser",
+            //   "birthday": "10.02.2010",
+            //   "sex" : 1,
+            //   "email": "admin@admin.ru",
+            //   "phone": "380503332211",
+            //   "additional_phone": '380503332211',
+            //   "inn_code": "1212102310",
+            //   "type_passport" : 1,
+            //   "passport": "ВЦ-221122",
+            //   "image": null
+            // };
             console.log('data',data)
             await api.post('api/director/create ', data);
             this.GlobalMixinMessagesSuccess( this.$t('m.CreateUser') + ' ' + data.first_name + ' ' + data.second_name );
