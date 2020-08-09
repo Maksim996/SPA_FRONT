@@ -141,7 +141,7 @@ export default {
   name: "MyProfile",
   data() {
     return {
-      tab: 'tab-Settings',
+      tab: 'tab-GeneralInfo',
       user: {},
       itemsTab: [
         'GeneralInfo',
