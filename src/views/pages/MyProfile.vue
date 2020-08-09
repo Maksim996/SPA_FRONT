@@ -164,7 +164,7 @@ export default {
         "birthday": this.GlobalFormatDateDMY("1950-01-01"),
         "sex": 0,
         "email": "admin@admin.ru",
-        "phone": this.GlobalCustomFormatStr('380503800011', [2,3,3,2,2], ''),
+        "phone": '380503800011',
         "additional_phone": '',
         "inn_code": this.GlobalCustomFormatStr("1212102310",[3,3,4],''),
         "type_passport": 0,
@@ -185,8 +185,8 @@ export default {
         },
         'Contacts': {
           "Email": this.user.email,
-          "NumberMobPhone": this.user.phone,
-          "AdditionalPhone": this.user.additional_phone,
+          "NumberMobPhone": this.GlobalCustomFormatStr(this.user.phone, [2,3,3,2,2], '') ,
+          "AdditionalPhone": this.GlobalCustomFormatStr(this.user.additional_phone, [2,3,3,2,2], '')
         },
         'Documents': {
           "InnCode": this.user.inn_code,
