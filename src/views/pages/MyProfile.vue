@@ -211,7 +211,7 @@ export default {
             'email': this.email,
             'phone': this.GlobalGetNumberPhone(this.$refs.Phones.phone),
             'additional_phone': this.GlobalGetNumberPhone(this.$refs.Phones.additionalPhone),
-            'inn_code': this.InnCode,
+            'inn_code': this.$refs.InnCode.innCode,
             'type_passport': this.$refs.NumberPassport.switchTypePassport,
             'passport': this.$refs.NumberPassport.numberPassport,
             'image': null, // TODO: add image cropper

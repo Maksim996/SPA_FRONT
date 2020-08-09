@@ -3,7 +3,7 @@
     <v-col cols="12" md="4">
       <validation-provider v-slot="{ errors }" :name="$t('t.InnCode')" rules="required|maskLength:10,-">
         <v-text-field
-          v-model="InnCode"
+          v-model="innCode"
           :label="$t('t.InnCode')"
           name="Inn_code"
           prepend-icon="mdi-barcode"
@@ -22,7 +22,7 @@
     name: "InnCode",
     data() {
       return {
-        InnCode: this.innCodeProp,
+        innCode: this.innCodeProp,
       }
     },
     props: {

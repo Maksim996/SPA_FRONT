@@ -5,7 +5,7 @@
         <v-sheet class="font-weight-medium text-h4 text-lg-h4 text-md-h5 mb-5 text-md-center" color="headerCC--text">{{$t('t.CreateDirector')}}</v-sheet>
       </div>
     </v-row>
-    <validation-observer ref="formValidate" v-slot="{ validate, reset }">
+    <validation-observer ref="createDirector" v-slot="{ validate, reset }">
       <form>
         <FirstSecondNames ref="FirstSecondNames" />
         <Phones ref="Phones" />
@@ -70,7 +70,7 @@
     methods: {
       async submitForm() {
 
-        const valid = await this.$refs.formValidate.validate()
+        const valid = await this.$refs.createDirector.validate()
           .then( (res) => res )
           .catch((e)=> this.GlobalMixinMessagesError(e));
 
@@ -80,13 +80,12 @@
               'first_name': this.$refs.FirstSecondNames.firstName,
               'second_name': this.$refs.FirstSecondNames.secondName,
               'patronymic': this.$refs.FirstSecondNames.patronymic,
-              // 'birthday': this.$refs.BirthdayDatePicker.date,
-              'birthday': '10.02.2010',
+              'birthday': this.$refs.BirthdayDatePicker.dateFormatted,
               'sex' : this.$refs.SexType.switchTypeSex,
               'email': this.email,
               'phone': this.GlobalGetNumberPhone(this.$refs.Phones.phone),
               'additional_phone': this.GlobalGetNumberPhone(this.$refs.Phones.additionalPhone),
-              'inn_code': this.InnCode,
+              'inn_code': this.GlobalGetSymbols(this.$refs.InnCode.innCode, 'OnlySymbols', '-'),
               'type_passport' : this.$refs.NumberPassport.switchTypePassport,
               'passport': this.$refs.NumberPassport.numberPassport,
               'image': null, // TODO: add image cropper

@@ -48,7 +48,7 @@
             v-show="showNewPassport"
             v-slot="{ errors }"
             :name="$t('t.NumberPassport')"
-            :rules="{required: showOldPassport, maskLength: {length: 9, separator: '-'} }"
+            :rules="{required: showNewPassport, maskLength: {length: 9, separator: '-'} }"
           >
             <v-text-field
               v-model="newNumberPassport"
@@ -85,8 +85,8 @@
     data() {
       return {
         switchTypePassport: this.passportTypeProp,
-        oldNumberPassport: this.passportTypeProp === PASSPORT_TYPE.oldNumberPassport ? this.passportProp :'',
-        newNumberPassport: this.passportTypeProp === PASSPORT_TYPE.newNumberPassport ? this.passportProp :'',
+        oldNumberPassport: this.passportTypeProp === PASSPORT_TYPE.oldNumberPassport ? this.passportProp : '',
+        newNumberPassport: this.passportTypeProp === PASSPORT_TYPE.newNumberPassport ? this.passportProp : '',
         numberPassport: '',
         PASSPORT_TYPE: PASSPORT_TYPE,
         showOldPassport: true,
@@ -116,7 +116,7 @@
       },
     },
     mounted() {
-      this.setNumberPassport(this.switchTypePassport);
+      this.setNumberPassport(this.passportTypeProp);
     },
     methods: {
       setNumberPassport(val) {
