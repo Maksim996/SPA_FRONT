@@ -1,12 +1,12 @@
 <template>
   <v-row>
     <v-col cols="12" md="4">
-      <validation-provider v-slot="{ errors }" :name="$t('t.Inn_code')" rules="required|maskLength:10,-">
+      <validation-provider v-slot="{ errors }" :name="$t('t.InnCode')" rules="required|maskLength:10,-">
         <v-text-field
           v-model="InnCode"
-          :label="$t('t.Inn_code')"
+          :label="$t('t.InnCode')"
           name="Inn_code"
-          prepend-icon="mdi-email"
+          prepend-icon="mdi-barcode"
           type="text"
           :error-messages="errors"
           v-mask="`###-###-####`"
@@ -22,7 +22,13 @@
     name: "InnCode",
     data() {
       return {
-        InnCode: '',
+        InnCode: this.innCodeProp,
+      }
+    },
+    props: {
+      innCodeProp: {
+        type: String,
+        default: '',
       }
     }
   }
