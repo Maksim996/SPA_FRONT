@@ -84,23 +84,9 @@
                               </validation-provider>
                             </v-col>
                           </v-row>
-                          <v-row>
-                            <v-col cols="12">
-                              <validation-provider v-slot="{ errors }" :name="$t('t.Description')"
-                                                   :rules="{max: $getConst('CONSTANTS')['DescriptionTextUser']}">
 
-                                <v-textarea
-                                  name="Description"
-                                  v-model="user.description"
-                                  :label="$t('t.Description')"
-                                  prepend-icon="mdi-comment-outline"
-                                  :error-messages="errors"
-                                  rows="1"
-                                  :counter="$getConst('CONSTANTS')['DescriptionTextUser']"
-                                ></v-textarea>
-                              </validation-provider>
-                            </v-col>
-                          </v-row>
+                          <VueEditor v-model="user.description" />
+
                           <div class="mt-3">
                             <v-btn class="mr-4" color="btnCC white--text" @click="saveGeneralInfo">{{ $t('t.Save') }}
                             </v-btn>
@@ -141,6 +127,7 @@ import BirthdayDatePicker from '@/components/BirthdayDatePicker';
 import SexType from '@/components/SexType';
 import NumberPassport from '@/components/NumberPassport';
 import InnCode from '@/components/InnCode';
+import { VueEditor } from "vue2-editor";
 
 export default {
   components: {
@@ -154,6 +141,7 @@ export default {
     SexType,
     NumberPassport,
     InnCode,
+    VueEditor,
   },
   name: "MyProfile",
   data() {
