@@ -24,3 +24,7 @@ export const SEX_TYPE = {
   Man: 1,
   Woman: 0,
 };
+
+export const CONSTANTS = {
+  DescriptionTextUser: 500,
+}

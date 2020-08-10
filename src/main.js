@@ -13,6 +13,7 @@ import vueMaskOptions from "@/plugins/vueMask";
 import VueMask from "v-mask";
 import '@/plugins/sweetalert2';
 import '@/plugins/flashMessage';
+import Consts from '@/plugins/getConst.js';
 
 store.dispatch('auth/checkLogged');
 
@@ -22,9 +23,9 @@ Vue.use(VueMask,
 
 Vue.mixin(GlobalMixin);
 Vue.mixin(GlobalMixinMessages);
+Vue.use(Consts);
 
 Vue.config.productionTip = false;
-
 new Vue({
   router,
   styles,
