@@ -3,7 +3,7 @@
     <v-row class="justify-center">
       <v-col class="col-lg-8 col-12">
         <template v-for="itemHeader in items">
-          <v-row class="items_line_info" v-for="(item, key) in itemHeader" :key="itemHeader">
+          <v-row class="items_line_info" v-for="(item, key) in itemHeader" :key="key">
             <v-col class="col-lg-3 col-5">
               <p class="font-weight-medium">{{$t(`t.${key}`) }}:</p>
             </v-col>
