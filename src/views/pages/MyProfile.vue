@@ -84,6 +84,23 @@
                               </validation-provider>
                             </v-col>
                           </v-row>
+                          <v-row>
+                            <v-col cols="12">
+                              <validation-provider v-slot="{ errors }" :name="$t('t.Description')"
+                                                   :rules="{max: $getConst('CONSTANTS')['DescriptionTextUser']}">
+
+                                <v-textarea
+                                  name="Description"
+                                  v-model="user.description"
+                                  :label="$t('t.Description')"
+                                  prepend-icon="mdi-comment-outline"
+                                  :error-messages="errors"
+                                  rows="1"
+                                  :counter="$getConst('CONSTANTS')['DescriptionTextUser']"
+                                ></v-textarea>
+                              </validation-provider>
+                            </v-col>
+                          </v-row>
                           <div class="mt-3">
                             <v-btn class="mr-4" color="btnCC white--text" @click="saveGeneralInfo">{{ $t('t.Save') }}
                             </v-btn>
@@ -154,22 +171,29 @@ export default {
   },
   mounted() {
     this.getUser()
+    this.$getConst('UPDATE_ACTION')
   },
   methods: {
     async getUser() {
+      const user = await this.$store.getters['auth/currentUser']
+      console.log(user);
+
       const data = {
         "first_name": "Max",
         "second_name": "ovr",
         "patronymic": "ser",
-        "birthday": this.GlobalFormatDateDMY("1950-01-01"),
+        "birthday": "1950-01-01",
         "sex": 0,
         "email": "admin@admin.ru",
-        "phone": '380503800011',
-        "additional_phone": '',
+        "phone": '503800011',
+        "phone_format": '+38 (050) 380 00 11',
+        "additional_phone": '663800011',
+        "additional_phone_format": '+38 (066) 380 00 11',
         "inn_code": this.GlobalCustomFormatStr("1212102310",[3,3,4],''),
         "type_passport": 0,
         "passport": "ВЦ221122",
-        "image": null
+        "image": null,
+        "description": 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, ex?'
       };
       this.user = data;
 
@@ -180,21 +204,26 @@ export default {
           "Patronymic": this.user.patronymic,
         },
         'GeneralInfo': {
-          "Birthday": this.user.birthday,
+          "Birthday":  this.GlobalFormatDateDMY(this.user.birthday),
           "Sex": this.user.sex,
         },
         'Contacts': {
           "Email": this.user.email,
-          "NumberMobPhone": this.GlobalCustomFormatStr(this.user.phone, [2,3,3,2,2], '') ,
-          "AdditionalPhone": this.GlobalCustomFormatStr(this.user.additional_phone, [2,3,3,2,2], '')
+          "NumberMobPhone": this.user.phone_format,
+          "AdditionalPhone": this.user.additional_phone_format,
         },
         'Documents': {
           "InnCode": this.user.inn_code,
           "PassportType": this.user.type_passport,
           "Passport": this.user.passport,
-        }
+        },
+        'Description': {
+          "Description": this.user.description,
+        },
       }
     },
+
+
     async saveGeneralInfo() {
       const valid = await this.$refs.formValidate.validate()
         .then((res) => res)
@@ -215,6 +244,7 @@ export default {
             'type_passport': this.$refs.NumberPassport.switchTypePassport,
             'passport': this.GlobalGetSymbols(this.$refs.NumberPassport.numberPassport, 'OnlySymbol'),
             'image': null, // TODO: add image cropper
+            'description': null, // TODO: add image cropper
           };
 
           console.log('data', data)
