@@ -84,9 +84,7 @@
                               </validation-provider>
                             </v-col>
                           </v-row>
-
-                          <VueEditor v-model="user.description" />
-
+                          <VueEditor v-model="user.description" :editor-toolbar="$getConst('TEXT_EDITOR_TOOLBAR_USER')"/>
                           <div class="mt-3">
                             <v-btn class="mr-4" color="btnCC white--text" @click="saveGeneralInfo">{{ $t('t.Save') }}
                             </v-btn>
@@ -154,7 +152,6 @@ export default {
       ],
       itemsAbout: {},
       headersSettings: ['ChangeAvatar', 'EditGeneralInfo', 'ChangePassword'],
-
     }
   },
   mounted() {
