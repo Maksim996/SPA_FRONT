@@ -1,4 +1,11 @@
-import {MASK_PHONE, SEX_TYPE, PASSPORT_TYPE, PAGINATION, ROLES, CONSTANTS} from '@/utils/constants'
+import {MASK_PHONE,
+        SEX_TYPE,
+        PASSPORT_TYPE,
+        PAGINATION,
+        ROLES,
+        CONSTANTS,
+        TEXT_EDITOR_TOOLBAR_USER
+} from '@/utils/constants'
 
 const CONSTS = {
   MASK_PHONE,
@@ -7,6 +14,7 @@ const CONSTS = {
   PAGINATION,
   ROLES,
   CONSTANTS,
+  TEXT_EDITOR_TOOLBAR_USER,
 };
 
 export default {

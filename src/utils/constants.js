@@ -28,3 +28,31 @@ export const SEX_TYPE = {
 export const CONSTANTS = {
   DescriptionTextUser: 500,
 }
+
+export const TEXT_EDITOR_TOOLBAR_USER = [
+  ["bold", "italic", "underline", "strike"],
+  [{
+    align: ""
+  }, {
+    align: "center"
+  }, {
+    align: "right"
+  }, {
+    align: "justify"
+  }],
+  [{
+    list: "ordered"
+  }, {
+    list: "bullet"
+  }, {
+    list: "check"
+  }], [{
+    indent: "-1"
+  }, {
+    indent: "+1"
+  }], // outdent/indent
+  [{
+    color: []
+  }],
+  ["link"], ["clean"] // remove formatting button
+]
