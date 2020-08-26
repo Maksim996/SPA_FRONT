@@ -80,33 +80,20 @@
               'first_name': this.$refs.FirstSecondNames.firstName,
               'second_name': this.$refs.FirstSecondNames.secondName,
               'patronymic': this.$refs.FirstSecondNames.patronymic,
-              'birthday': this.$refs.BirthdayDatePicker.dateFormatted,
+              'birthday': this.$refs.BirthdayDatePicker.date,
               'sex' : this.$refs.SexType.switchTypeSex,
               'email': this.email,
               'phone': this.GlobalGetNumberPhone(this.$refs.Phones.phone),
               'additional_phone': this.GlobalGetNumberPhone(this.$refs.Phones.additionalPhone),
               'inn_code': this.GlobalGetSymbols(this.$refs.InnCode.innCode, 'OnlySymbols', '-'),
               'type_passport' : this.$refs.NumberPassport.switchTypePassport,
-              'passport': this.GlobalGetSymbols(this.$refs.NumberPassport.numberPassport, 'OnlySymbol'),
+              'passport': this.GlobalGetSymbols(this.$refs.NumberPassport.numberPassport, 'OnlySymbols'),
               'image': null, // TODO: add image cropper
             };
-            // const data = {
-            //   "first_name": "Max",
-            //   "second_name": "ovr",
-            //   "patronymic": "ser",
-            //   "birthday": "10.02.2010",
-            //   "sex" : 1,
-            //   "email": "admin@admin.ru",
-            //   "phone": "380503332211",
-            //   "additional_phone": '380503332211',
-            //   "inn_code": "1212102310",
-            //   "type_passport" : 1,
-            //   "passport": "ВЦ-221122",
-            //   "image": null
-            // };
-            console.log('data',data)
+
             await api.post('api/director/create ', data);
             this.GlobalMixinMessagesSuccess( this.$t('m.CreateUser') + ' ' + data.first_name + ' ' + data.second_name );
+            this.GlobalMixinGoToPath('ListDirectors');
           } catch (e) {
             this.GlobalMixinMessagesError(e);
             console.log('error', e)
