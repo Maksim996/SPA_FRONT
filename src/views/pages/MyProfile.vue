@@ -74,7 +74,7 @@
                             <v-col cols="12" md="4">
                               <validation-provider v-slot="{ errors }" :name="$t('t.Email')" rules="required|email">
                                 <v-text-field
-                                  v-model="user.email"
+                                  v-model="email"
                                   :label="$t('t.Email')"
                                   name="Email"
                                   prepend-icon="mdi-email"
@@ -84,7 +84,7 @@
                               </validation-provider>
                             </v-col>
                           </v-row>
-                          <VueEditor v-model="user.description" :editor-toolbar="$getConst('TEXT_EDITOR_TOOLBAR_USER')"/>
+                          <vue-editor v-model="description" :editor-toolbar="$getConst('TEXT_EDITOR_TOOLBAR_USER')"/>
                           <div class="mt-3">
                             <v-btn class="mr-4" color="btnCC white--text" @click="saveGeneralInfo">{{ $t('t.Save') }}
                             </v-btn>
@@ -146,12 +146,15 @@ export default {
     return {
       tab: 'tab-GeneralInfo',
       user: {},
+      email: '',
       itemsTab: [
         'GeneralInfo',
         'Settings',
       ],
       itemsAbout: {},
       headersSettings: ['ChangeAvatar', 'EditGeneralInfo', 'ChangePassword'],
+      description: '',
+      user_id: null,
     }
   },
   mounted() {
@@ -161,26 +164,14 @@ export default {
   methods: {
     async getUser() {
       const user = await this.$store.getters['auth/currentUser']
-      console.log(user);
+      this.user_id = user.id;
 
       const data = {
-        "first_name": "Max",
-        "second_name": "ovr",
-        "patronymic": "ser",
-        "birthday": "1950-01-01",
-        "sex": 0,
-        "email": "admin@admin.ru",
-        "phone": '503800011',
-        "phone_format": '+38 (050) 380 00 11',
-        "additional_phone": '663800011',
-        "additional_phone_format": '+38 (066) 380 00 11',
-        "inn_code": this.GlobalCustomFormatStr("1212102310",[3,3,4],''),
-        "type_passport": 0,
-        "passport": "ВЦ221122",
-        "image": null,
-        "description": 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, ex?'
+        ...user
       };
       this.user = data;
+      this.email = data.email;
+      this.description = data.description;
 
       this.itemsAbout = {
         'FIO': {
@@ -225,15 +216,13 @@ export default {
             'email': this.email,
             'phone': this.GlobalGetNumberPhone(this.$refs.Phones.phone),
             'additional_phone': this.GlobalGetNumberPhone(this.$refs.Phones.additionalPhone),
-            'inn_code': this.$refs.InnCode.innCode,
+            'inn_code': this.GlobalGetSymbols(this.$refs.InnCode.innCode, 'OnlySymbols'),
             'type_passport': this.$refs.NumberPassport.switchTypePassport,
-            'passport': this.GlobalGetSymbols(this.$refs.NumberPassport.numberPassport, 'OnlySymbol'),
+            'passport': this.GlobalGetSymbols(this.$refs.NumberPassport.numberPassport, 'OnlySymbols'),
             'image': null, // TODO: add image cropper
-            'description': null, // TODO: add image cropper
+            'description': this.description,
           };
-
-          console.log('data', data)
-          // await api.post('api/director/create ', data);
+          await api.put(`api/director/${this.user_id}`, data);
           this.GlobalMixinMessagesSuccess(this.$t('m.CreateUser') + ' ' + data.first_name + ' ' + data.second_name);
         } catch (e) {
           this.GlobalMixinMessagesError(e);

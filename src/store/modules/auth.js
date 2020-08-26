@@ -56,12 +56,12 @@ const actions = {
 const mutations = {
   [LOGIN](state, payload) {
     const {token} = payload;
-    localStorage.setItem('token', token);
-    api.setHeader('Authorization', 'Bearer ' + token);
-
-    state.isLogged = true;
-    state.token = token;
-
+    if (token !== null && token !== 'null' && token !== undefined) {
+      localStorage.setItem('token', token);
+      api.setHeader('Authorization', 'Bearer ' + token);
+      state.isLogged = true;
+      state.token = token;
+    }
   },
   [CURRENT_USER](state, payload) {
     state.currentUser = payload;
