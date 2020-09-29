@@ -13,7 +13,7 @@
       <v-row align="center"
              justify="center"
       >
-        <v-col cols="12"
+        <v-col cols="8"
                sm="8"
                md="4"
         >
@@ -26,7 +26,8 @@
       >
         <v-col cols="12"
                sm="8"
-               md="4"
+               md="6"
+               lg="4"
         >
           <v-card >
           <v-toolbar
@@ -165,6 +166,7 @@
 <style scoped>
   .switch-type{
     position: absolute;
-    right: 50px;
+    right: 20px;
+    top: 10px;
   }
 </style>
