@@ -25,8 +25,8 @@ export default {
       title: 'Directors',
       icon: 'mdi-account-multiple',
       submenu: [
-        CreateDirector,
         ListDirectors,
+        CreateDirector,
       ],
     };
     let rows = [];
