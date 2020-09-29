@@ -1,4 +1,10 @@
+import ua from 'vuetify/src/locale/uk.ts'
+
 export default {
+  $vuetify: {
+    ...ua
+  },
+
   t: {
     LoginIn: 'Авторизуватись',
     Register: 'Реєстрація',

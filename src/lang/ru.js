@@ -1,4 +1,10 @@
+import ru from 'vuetify/src/locale/ru.ts'
+
 export default {
+  $vuetify: {
+    ...ru
+  },
+
   t: {
     LoginIn: 'Авторизоваться',
     Register: 'Регестрация',
@@ -51,7 +57,7 @@ export default {
     ConfirmPassword: 'Подтверждение пароля',
     NewPassword: 'Новый пароль',
     CurrentPassword: 'Текущий пароль',
-    Clear: 'Очистить'
+    Clear: 'Очистить',
 
   },
 
