@@ -67,10 +67,10 @@
     </v-col>
     <v-col cols="6" lg="4">
       <template v-if="showOldPassport">
-        <v-img src="images/passports/oldPassport.jpg" aspect-ratio="3" contain></v-img>
+        <v-img src="/images/passports/oldPassport.jpg" aspect-ratio="3" contain></v-img>
       </template>
       <template v-if="showNewPassport">
-        <v-img src="images/passports/newPassport.jpg" aspect-ratio="3" contain></v-img>
+        <v-img src="/images/passports/newPassport.jpg" aspect-ratio="3" contain></v-img>
       </template>
     </v-col>
   </v-row>
