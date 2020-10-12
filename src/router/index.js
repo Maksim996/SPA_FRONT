@@ -9,6 +9,8 @@ import ListDirectors from '@/views/pages/Director/ListDirectors.vue';
 import NotFound from '@/views/pages/NotFound.vue';
 import {ROLES} from '@/utils/constants';
 import store from '@/store';
+import Layout from '@/views/Layout';
+import EditDirector from '@/views/pages/Director/EditDirector'
 
 Vue.use(VueRouter);
 
@@ -76,7 +78,7 @@ const routes = [
     },
   },
   {
-    path: '/my_profile',
+    path: '/my-profile',
     name: 'MyProfile',
     component: MyProfile,
     beforeEnter: ifAuth,
@@ -85,7 +87,7 @@ const routes = [
     },
   },
   {
-    path: '/create_director',
+    path: '/create-director',
     name: 'CreateDirector',
     component: CreateDirector,
     beforeEnter: ifAuth,
@@ -94,14 +96,49 @@ const routes = [
     },
   },
   {
-    path: '/list_directors',
-    name: 'ListDirectors',
-    component: ListDirectors,
+    path: '/director',
+    component: Layout,
     beforeEnter: ifAuth,
-    meta: {
-      accessIsAllowed: allRoles(),
-    },
+    children: [
+      // this is also a route record
+      {
+        path: 'list',
+        name: 'ListDirectors',
+        component: ListDirectors,
+        beforeEnter: ifAuth,
+        meta: {
+          accessIsAllowed: allRoles(),
+        },
+      },
+      {
+        path: 'edit/:id',
+        name: 'EditDirector',
+        component: EditDirector,
+        beforeEnter: ifAuth,
+        meta: {
+          accessIsAllowed: allRoles(),
+        }
+      },
+    ]
   },
+  // {
+  //   path: '/list-directors',
+  //   name: 'ListDirectors',
+  //   component: ListDirectors,
+  //   beforeEnter: ifAuth,
+  //   meta: {
+  //     accessIsAllowed: allRoles(),
+  //   },
+  // },
+  // {
+  //   path: '/edit-directors/:id',
+  //   name: 'EditDirector',
+  //   component: ListDirectors,
+  //   beforeEnter: ifAuth,
+  //   meta: {
+  //     accessIsAllowed: allRoles(),
+  //   },
+  // },
   {
     path: '*',
     name: 'notFound',
