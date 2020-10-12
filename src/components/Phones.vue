@@ -53,6 +53,14 @@
         additionalPhone: this.GlobalCustomFormatStr(this.additionalPhoneProp),
       }
     },
+    watch: {
+      phoneProp(v) {
+        this.phone = v;
+      },
+      additionalPhoneProp(v) {
+        this.additionalPhone = v;
+      }
+    },
     props: {
       phoneProp: {
         type: String,
