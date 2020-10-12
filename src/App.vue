@@ -6,10 +6,8 @@
     </template>
     <v-main>
       <v-container :fill-height="!isLogged" class="h-100 ">
-        <FlashMessage :position="'right bottom'" />
+        <FlashMessage :position="'right bottom'"/>
         <router-view></router-view>
-              <!--        <loader></loader>-->
-        <!--        <messages-info></messages-info>-->
       </v-container>
     </v-main>
   </v-app>
