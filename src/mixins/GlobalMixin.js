@@ -1,6 +1,10 @@
 import { PASSPORT_TYPE, SEX_TYPE } from '@/utils/constants'
+import GlobalMixinLoader from '@/components/loader'
 
 export default {
+  components: {
+    GlobalMixinLoader
+  },
   data() {
     return {
       GlobalTypePatient: 'Patient',
