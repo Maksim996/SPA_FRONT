@@ -21,7 +21,7 @@
       <template v-slot:item.actions="{ item }">
         <v-icon
           class="mr-2"
-          @click="editItem(item)"
+          @click="editItem( item )"
         >
           mdi-pencil
         </v-icon>
@@ -56,6 +56,7 @@
         ],
         desserts: [
           {
+            id: 1,
             name: 'Frozen Yogurt',
             phone: '+38(000)-000-00-00',
             email: 'example@example.ua',
@@ -65,6 +66,10 @@
       }
     },
     methods: {
+      async editItem(item) {
+          this.$router.push(`/director/edit/${item.id}`);
+        // this.GlobalMixinGoToPath('EditDirector', {id})
+      },
       deleteItem(item) {
         this.$swal({
           title: 'Are you sure?',
