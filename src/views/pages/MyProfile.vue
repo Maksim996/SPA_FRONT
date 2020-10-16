@@ -26,6 +26,15 @@
           <AboutInfoProfile :items="itemsAbout"/>
         </v-tab-item>
         <v-tab-item
+          value="tab-Description"
+        >
+          <v-container fluid>
+            <v-row class="justify-center">
+              <v-col class="col-lg-8 col-12" v-html="user.description" />
+            </v-row>
+          </v-container>
+        </v-tab-item>
+        <v-tab-item
           value="tab-Settings"
         >
           <v-card
@@ -149,6 +158,7 @@ export default {
       email: '',
       itemsTab: [
         'GeneralInfo',
+        'Description',
         'Settings',
       ],
       itemsAbout: {},
@@ -192,9 +202,6 @@ export default {
           "InnCode": this.user.inn_code,
           "PassportType": this.user.type_passport,
           "Passport": this.user.passport,
-        },
-        'Description': {
-          "Description": this.user.description,
         },
       }
     },
