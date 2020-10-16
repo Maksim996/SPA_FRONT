@@ -95,12 +95,6 @@ export default {
 
             message = messages.hasOwnProperty('message') ? messages.message : messages.data.message
 
-            switch (messages.status) {
-              case 200:
-                options['destroyed'] = this.$router.go(-1);
-                break;
-            }
-
            break;
 
           case 'string':
