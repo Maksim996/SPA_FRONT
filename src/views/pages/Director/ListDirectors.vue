@@ -13,77 +13,101 @@
         hide-details
       ></v-text-field>
     </v-card-title>
-    <v-data-table
-      :headers="headers"
-      :items="desserts"
-      :search="search"
-    >
-      <template v-slot:item.actions="{ item }">
-        <v-icon
-          class="mr-2"
-          @click="editItem( item )"
-        >
-          mdi-pencil
-        </v-icon>
-        <v-icon
-          color="red"
-          @click="deleteItem(item)"
-        >
-          mdi-delete
-        </v-icon>
+      <v-simple-table>
+        <template v-slot:default>
+          <thead>
+            <tr>
+              <template v-for="header in headers">
+                <th :class="header.classes">
+                  {{header.text}}
+                </th>
+              </template>
+            </tr>
+          </thead>
+          <tbody v-if="items.length">
+            <tr
+              v-for="item in items"
+              :key="item.name"
+            >
+              <template v-for="name in headers">
+                <td v-if="name.value !== 'actions'">{{ item[name.value] }}</td>
+                <td v-else>
+                  <v-icon
+                    class="mr-2"
+                    @click="editItem( item )"
+                  >
+                    mdi-pencil
+                  </v-icon>
+                  <v-icon
+                    color="red"
+                    @click="deleteItem(item)"
+                  >
+                    mdi-delete
+                  </v-icon>
+                </td>
+              </template>
+            </tr>
+          </tbody>
+          <tbody v-else></tbody>
+        </template>
+      </v-simple-table>
+      <template v-if="!items.length">
+        <LoaderLinear/>
       </template>
-    </v-data-table>
   </v-card>
 </template>
 
 <script>
+  import api from '@/api'
+  import LoaderLinear from '@/components/LoaderLinear';
+
   export default {
     name: "ListDirectors",
+    components: {
+      LoaderLinear
+    },
     data() {
       return {
         search: '',
         headers: [
           {
             text: this.$t('t.FIO'),
-            align: 'start',
-            sortable: true,
-            value: 'name',
+            classes: 'start',
+            value: 'fullName',
           },
-          {text: this.$t('t.NumberMobPhone'), value: 'phone'},
+          {text: this.$t('t.NumberMobPhone'), value: 'phone_format'},
           {text: this.$t('t.Email'), value: 'email'},
-          {text: this.$t('t.Actions'), value: 'actions', sortable: false},
-          // { text: 'Carbs (g)', value: 'carbs' },
+          {text: this.$t('t.Actions'), value: 'actions'},
         ],
-        desserts: [
-          {
-            id: 1,
-            name: 'Frozen Yogurt',
-            phone: '+38(000)-000-00-00',
-            email: 'example@example.ua',
-            carbs: 24,
-          },
-        ],
+        items: [],
       }
     },
+    created() {
+      this.getItems();
+    },
     methods: {
+      async getItems() {
+        const { data } = await api.get('api/director');
+        this.items = data.data;
+      },
       async editItem(item) {
           this.$router.push(`/director/edit/${item.id}`);
-        // this.GlobalMixinGoToPath('EditDirector', {id})
       },
-      deleteItem(item) {
+      async deleteItem(item) {
         this.$swal({
-          title: 'Are you sure?',
-          text: "You won't be able to revert this!",
+          title: this.$t('m.AreYouSure'),
+          text: this.$t('m.UserBeDeactivated'),
           icon: 'warning',
           showCancelButton: true,
-          confirmButtonText: 'Yes, delete it!'
+          confirmButtonText: this.$t('t.Yes'),
+          cancelButtonText: this.$t('t.No')
         }).then((result) => {
           if (result.value) {
-            this.$swal(
-              'Deleted!',
-              'Your file has been deleted.',
-              'success'
-            )
+            const success = api.patch('api/director/active/', item.id);
+            if (success)
+              this.GlobalMixinMessagesSuccess(this.$t('m.DeactivateUser'));
+            else
+              this.GlobalMixinMessagesError($t('m.UnknownError'));
           }
         })
       }
