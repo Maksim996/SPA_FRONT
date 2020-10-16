@@ -30,7 +30,8 @@
         >
           <v-container fluid>
             <v-row class="justify-center">
-              <v-col class="col-lg-8 col-12" v-html="user.description" />
+              <v-col v-if="user.description" class="col-lg-8 col-12" v-html="user.description" />
+              <base-no-data v-else/>
             </v-row>
           </v-container>
         </v-tab-item>
