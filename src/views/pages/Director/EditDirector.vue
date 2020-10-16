@@ -60,7 +60,7 @@ export default {
         try {
           const response = await api.update('api/director', this.user_id, data)
           this.GlobalMixinMessagesSuccess(response);
-
+          this.$router.go(-1);
         } catch (error) {
           this.GlobalMixinMessagesError(error.response);
         }
