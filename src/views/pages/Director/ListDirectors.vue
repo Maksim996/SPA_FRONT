@@ -52,20 +52,16 @@
         </template>
       </v-simple-table>
       <template v-if="!items.length">
-        <LoaderLinear/>
+        <base-loader-linear/>
       </template>
   </v-card>
 </template>
 
 <script>
   import api from '@/api'
-  import LoaderLinear from '@/components/LoaderLinear';
 
   export default {
     name: "ListDirectors",
-    components: {
-      LoaderLinear
-    },
     data() {
       return {
         search: '',

@@ -12,7 +12,7 @@
         <v-btn color="btnCC white--text" class="mr-4" @click="submitForm">{{$t('t.Save')}}</v-btn>
       </div>
     </template>
-    <global-mixin-loader v-else></global-mixin-loader>
+    <base-loader v-else></base-loader>
 
   </v-container>
 

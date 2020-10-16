@@ -14,6 +14,7 @@ import VueMask from "v-mask";
 import '@/plugins/sweetalert2';
 import '@/plugins/flashMessage';
 import Consts from '@/plugins/getConst.js';
+import '@/services/BaseComponents.js'
 
 store.dispatch('auth/checkLogged');
 
