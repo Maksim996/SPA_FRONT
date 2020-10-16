@@ -25,7 +25,7 @@ export default {
     GlobalGetNumberPhone(number) {
       return number.replace(/[^\d]/g, '');
     },
-    GlobalCustomFormatStr(number, mask = [2,3,2,2], regExp = /^380/, separator = '-') {
+    GlobalCustomFormatStr(number, mask = [3,3,2,2], regExp = /^380/, separator = '-') {
       let num = '';
       if (number !== null && number !== '') {
         let n = String(number).replace(regExp,'');
