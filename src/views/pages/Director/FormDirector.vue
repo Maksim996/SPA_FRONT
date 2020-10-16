@@ -69,7 +69,6 @@
             'patronymic': this.$refs.FirstSecondNames.patronymic,
             'birthday': this.$refs.BirthdayDatePicker.date,
             'sex': this.$refs.SexType.switchTypeSex,
-            // 'email': this.email,
             'email': this.$refs.email.email,
             'phone': this.GlobalGetNumberPhone(this.$refs.Phones.phone),
             'additional_phone': this.GlobalGetNumberPhone(this.$refs.Phones.additionalPhone),

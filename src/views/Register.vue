@@ -77,7 +77,7 @@
     methods: {
       async registerUser() {
         const valid = await this.$refs.observer.validate('value').then((res) => res);
-        console.log(valid)
+
         if (valid) {
           const data = {
             name: this.name,
