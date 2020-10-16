@@ -58,6 +58,8 @@ export default {
     NewPassword: 'Новий пароль',
     CurrentPassword: 'Поточний пароль',
     Clear: 'Очистити',
+    Yes: 'Так',
+    No: 'Ні',
   },
 
   veeValidate: {
@@ -100,6 +102,12 @@ export default {
     FormIsNotCompletedCorrectly: 'Форма заповнена неправильно !',
     PageDoesNotExist: 'Сторінка не існує',
     '404': 'Упс, 404',
-    PasswordChangedSuccessfully: 'Пароль успішно змінений'
+    PasswordChangedSuccessfully: 'Пароль успішно змінений',
+    UserSuccessDelete: 'Користувач успішно видалений',
+    Loading: 'Завантаження... Будь ласка, зачекайте',
+    UnknownError: 'Неизвестная ошибка',
+    DeactivateUser: 'Користувач деактивовано',
+    AreYouSure: 'Ви впевнені?',
+    UserBeDeactivated: 'Користувач буде деактивований',
   }
 }

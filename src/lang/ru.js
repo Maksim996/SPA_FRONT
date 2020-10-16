@@ -58,7 +58,8 @@ export default {
     NewPassword: 'Новый пароль',
     CurrentPassword: 'Текущий пароль',
     Clear: 'Очистить',
-
+    Yes: 'Да',
+    No: 'Нет',
   },
 
   veeValidate: {
@@ -103,5 +104,11 @@ export default {
     PageDoesNotExist: 'Страница не существует',
     '404': 'Упс, 404',
     PasswordChangedSuccessfully: 'Пароль успешно изменен',
+    UserSuccessDelete: 'Пользователь успешно удален',
+    Loading: 'Загрузка... Пожалуйста подождите',
+    UnknownError: 'Неизвестная ошибка',
+    DeactivateUser: 'Пользователь деактивирован',
+    AreYouSure: 'Вы уверены?',
+    UserBeDeactivated: 'Пользователь будет деактивирован',
   }
 }
