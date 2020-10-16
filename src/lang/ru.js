@@ -60,6 +60,7 @@ export default {
     Clear: 'Очистить',
     Yes: 'Да',
     No: 'Нет',
+    NoData: 'Нет Данных',
   },
 
   veeValidate: {
