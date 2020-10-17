@@ -1,11 +1,19 @@
 export const ROLES = {
   PASSPORT_SCOPE: {
     'Root': 'Root',
-    'Admin': 'Admin',
+    'Director': 'Director',
+    'Supervisor': 'Supervisor',
+    'Administrator': 'Administrator',
+    'Doctor': 'Doctor',
+    'MedicalRepresentative': 'MedicalRepresentative',
   },
   ID: {
     'Root': 1,
-    'Admin': 2,
+    'Director': 2,
+    'Supervisor': 3,
+    'Administrator': 4,
+    'Doctor': 5,
+    'MedicalRepresentative': 6,
   },
 };
 

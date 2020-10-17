@@ -12,6 +12,13 @@ const state = {
 const getters = {
   isLogged: state => state.isLogged,
   currentUser: state => state.currentUser,
+  fullName: state => {
+    let fullName = '';
+    if(state.currentUser && Object.keys(state.currentUser).length) {
+      fullName = `${state.currentUser.first_name} ${state.currentUser.second_name} ${state.currentUser.patronymic}`
+    }
+    return fullName
+  }
 };
 
 const actions = {

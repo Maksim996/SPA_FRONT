@@ -13,13 +13,13 @@
       class="py-0"
     >
       <v-list-item two-line :class="miniVariant && 'px-0'">
-        <v-list-item-avatar>
-          <img src="https://randomuser.me/api/portraits/men/81.jpg" alt="">
+        <v-list-item-avatar v-if="user">
+          <img :src="user.image" alt="profile">
         </v-list-item-avatar>
 
         <v-list-item-content>
-          <v-list-item-title>Application</v-list-item-title>
-          <v-list-item-subtitle>Subtext</v-list-item-subtitle>
+          <v-list-item-title v-if="fullName">{{ fullName }}</v-list-item-title>
+          <v-list-item-subtitle v-if="roleName">{{ $t(`t.${roleName}`) }}</v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
       <template v-for="item in NavigationItems">
@@ -83,6 +83,7 @@
 <script>
   import MixinDrawer from '@/mixins/MixinDrawer';
   import Navigation from '@/services/navigation';
+  import { ROLES } from '@/utils/constants'
 
   export default {
     mixin: [
@@ -103,6 +104,18 @@
       },
       drawer() {
         return this.$store.getters['drawer']
+      },
+      fullName() {
+        return this.$store.getters['auth/fullName'];
+      },
+      roleName() {
+        let roleName = false;
+        if (this.user && Object.keys(this.user).length) {
+          const than = this
+          roleName = Object.keys(ROLES.ID).filter(function(key) {
+            return ROLES.ID[key] === than.user.role_id })[0]
+        }
+        return roleName
       }
     },
     methods: {
