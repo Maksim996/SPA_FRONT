@@ -20,7 +20,7 @@ api.interceptors.response.use(
   async resp => resp,
   async err => {
     if (err.response.data.message === 'Unauthenticated.') {
-      await vuexStore.dispatch('auth/logout');
+      vuexStore.commit('auth/LOGOUT');
       router.push({ name: 'Login' });
     }
     return Promise.reject(err);

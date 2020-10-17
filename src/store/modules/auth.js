@@ -45,6 +45,7 @@ const actions = {
   },
   async logout({dispatch, commit}) {
     const json = await api.get('api/logout');
+
     if (json.status === 200) {
       commit(CURRENT_USER, null);
       commit(LOGOUT);
@@ -72,6 +73,7 @@ const mutations = {
 
     state.isLogged = false;
     state.token = null;
+    state.currentUser = null;
   },
 };
 
