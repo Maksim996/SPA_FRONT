@@ -18,7 +18,7 @@ export default {
       for(let e in data) {
         messages += '<li>' + data[e] + '</li>'
       }
-      return messages
+      return messages + '<br>'
     }
   }
 }
