@@ -39,6 +39,7 @@ const show = async (resource, id = null) => await api.get(`${resource}/${id}`);
 const store = async (resource, data) => await api.post(resource, data);
 const update = async (resource, id, data) => await api.put(`${resource}/${id}`, data);
 const destroy = async (resource, id) => await api.delete(`${resource}/${id}`);
+
 export default {
   get,
   post,
