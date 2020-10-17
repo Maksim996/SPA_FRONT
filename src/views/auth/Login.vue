@@ -44,7 +44,7 @@
           </v-toolbar>
           <v-card-text>
             <ValidationObserver ref="observer" v-slot="{ validate, reset }">
-              <v-form>
+              <form @submit.prevent="handleSubmit(authUser)" v-on:keyup.enter="authUser">
                 <validation-provider v-if="type === GlobalTypePersonnel" v-slot="{ errors }" :name="$t('t.Email')" rules="required|email">
                   <v-text-field
                     v-model="email"
@@ -78,7 +78,7 @@
                     v-model="password"
                   ></v-text-field>
                 </validation-provider>
-              </v-form>
+              </form>
             </ValidationObserver>
           </v-card-text>
           <v-card-actions>
@@ -97,7 +97,6 @@
 </template>
 
 <script>
-  import api from '@/api/index.js'
 
   export default {
     name: "Login",
@@ -134,18 +133,16 @@
                   });
                   this.$router.push({name: 'MyProfile'});
                 } catch (e) {
-                  console.log(e);
+                  this.GlobalMixinMessagesError(e.response);
                 }
                 break;
               case this.GlobalTypePatient:
                 break;
             }
           } catch (e) {
-            console.log(e);
+            this.GlobalMixinMessagesError(e.response);
           }
-
         }
-
       },
       switchType() {
         switch (this.type) {
