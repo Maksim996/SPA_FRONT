@@ -5,9 +5,7 @@
         dark
         height="200"
         :src="background"
-      >
-
-      </v-parallax>
+      />
     </v-row>
     <v-row class="avatar_block">
       <v-avatar
@@ -16,16 +14,16 @@
         size="200"
         tile
       >
-        <v-img :src="avatarData"></v-img>
+        <v-img :src="avatar"></v-img>
       </v-avatar>
       <v-col class="pt-5">
         <v-list-item
           color="rgba(0, 0, 0, .4)"
           dark
         >
-          <v-list-item-content>
-            <v-list-item-title class="title text-h5">{{second_name}} {{first_name}} {{patronymic}}</v-list-item-title>
-            <v-list-item-subtitle class="white--text text-h6">{{rules}} {{avatar}}</v-list-item-subtitle>
+          <v-list-item-content v-if="userProp && Object.keys(userProp).length">
+            <v-list-item-title class="title text-h5">{{userProp.second_name}} {{userProp.first_name}} {{userProp.patronymic}}</v-list-item-title>
+            <v-list-item-subtitle class="white--text text-h6">{{rules}}</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
       </v-col>
@@ -38,41 +36,20 @@
     name: "AvatarProfile",
     data(){
       return {
-        avatarData: ''
+        avatar: `images/default/AvatarMan.png`,
+        background: 'images/default/background.jpg',
+        rules: 'admin'
       }
     },
-    props: {
-      first_name: {
-        type: String,
-        default: '',
-      },
-      second_name: {
-        type: String,
-        default: '',
-      },
-      patronymic: {
-        type: String,
-        default: '',
-      },
-      rules: {
-        type: String,
-        default: '',
-      },
-      sex: {
-        type: Number,
-        default: 0,
-      },
-      avatar: {
-        type: String,
-      },
-      background: {
-        type: String,
-        default: 'images/default/background.jpg',
+    props: ['userProp'],
+    watch: {
+      userProp(v) {
+        if (v.image)
+          this.avatar = v.image;
+        if (v.background)
+          this.background = v.background;
       },
     },
-    mounted() {
-      this.avatarData = this.avatar || `images/default/Avatar${this.sex ? 'Man' : 'Woman'}.png`
-    }
   }
 </script>
 

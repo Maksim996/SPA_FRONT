@@ -2,10 +2,7 @@
   <div>
     <TitlePage :title="$t('t.MyProfile')"/>
     <AvatarProfile
-      :first_name="user.first_name"
-      :second_name="user.second_name"
-      :patronymic="user.patronymic"
-      :rules="'admin'"
+      :user-prop="user"
     />
     <v-tabs
       v-model="tab"
@@ -30,7 +27,7 @@
         >
           <v-container fluid>
             <v-row class="justify-center">
-              <v-col v-if="user.description" class="col-lg-8 col-12" v-html="user.description" />
+              <v-col v-if="user && user.description" class="col-lg-8 col-12" v-html="user.description" />
               <base-no-data v-else/>
             </v-row>
           </v-container>
@@ -155,7 +152,7 @@ export default {
   data() {
     return {
       tab: 'tab-GeneralInfo',
-      user: {},
+      user: null,
       email: '',
       itemsTab: [
         'GeneralInfo',
@@ -170,7 +167,6 @@ export default {
   },
   mounted() {
     this.getUser()
-    this.$getConst('UPDATE_ACTION')
   },
   methods: {
     async getUser() {
@@ -231,10 +227,13 @@ export default {
             'description': this.description,
           };
           await api.put(`api/director/${this.user_id}`, data);
+
+          const updateUser = await this.$store.dispatch('auth/getUserCurrent');
+          if (updateUser) this.getUser();
+
           this.GlobalMixinMessagesSuccess(this.$t('m.CreateUser') + ' ' + data.first_name + ' ' + data.second_name);
         } catch (e) {
           this.GlobalMixinMessagesError(e);
-          console.log('error', e)
         }
       } else {
         this.GlobalMixinMessagesError(this.$t('m.FormIsNotCompletedCorrectly'));
