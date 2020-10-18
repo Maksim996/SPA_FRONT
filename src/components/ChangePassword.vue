@@ -36,6 +36,8 @@
 </template>
 
 <script>
+import api from '@/api'
+
   export default {
     name: "ChangePassword",
     data() {
@@ -58,13 +60,15 @@
         if (valid) {
           try {
             const data = {
-              сurrentPassword: this.сurrentPassword,
-              newPassword: this.newPassword,
-              confirmPassword: this.confirmPassword
+              old_password: this.сurrentPassword,
+              password: this.newPassword,
+              password_confirmation: this.confirmPassword
             };
 
-            await api.post(this.post, data);
+            const status = await api.patch(this.post, null, data);
+
             this.GlobalMixinMessagesSuccess( this.$t('m.PasswordChangedSuccessfully') );
+            this.clearPassword();
           } catch (e) {
             this.GlobalMixinMessagesError(e);
           }

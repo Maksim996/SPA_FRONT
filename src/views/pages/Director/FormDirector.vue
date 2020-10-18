@@ -19,14 +19,15 @@
 </template>
 
 <script>
-  import FirstSecondNames from '@/components/FirstSecondNames';
-  import BirthdayDatePicker from '@/components/BirthdayDatePicker';
-  import Phones from '@/components/Phones';
+  import FirstSecondNames from '@/components/fields/FirstSecondNames';
+  import BirthdayDatePicker from '@/components/fields/BirthdayDatePicker';
+  import Phones from '@/components/fields/Phones';
+  import NumberPassport from '@/components/fields/NumberPassport';
+  import InnCode from '@/components/fields/InnCode';
+  import SexType from '@/components/fields/SexType';
+  import Email from '@/components/fields/Email';
+
   import {SEX_TYPE} from '@/utils/constants';
-  import NumberPassport from '@/components/NumberPassport';
-  import InnCode from '@/components/InnCode';
-  import SexType from '@/components/SexType';
-  import Email from '@/components/Email';
 
   export default {
     components:{

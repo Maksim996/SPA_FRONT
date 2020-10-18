@@ -126,12 +126,12 @@ import TitlePage from '@/components/TitlePage';
 import AvatarProfile from '@/components/AvatarProfile';
 import AboutInfoProfile from '@/components/AboutInfoProfile';
 import ChangePassword from '@/components/ChangePassword';
-import FirstSecondNames from '@/components/FirstSecondNames';
-import Phones from '@/components/Phones';
-import BirthdayDatePicker from '@/components/BirthdayDatePicker';
-import SexType from '@/components/SexType';
-import NumberPassport from '@/components/NumberPassport';
-import InnCode from '@/components/InnCode';
+import FirstSecondNames from '@/components/fields/FirstSecondNames';
+import Phones from '@/components/fields/Phones';
+import BirthdayDatePicker from '@/components/fields/BirthdayDatePicker';
+import SexType from '@/components/fields/SexType';
+import NumberPassport from '@/components/fields/NumberPassport';
+import InnCode from '@/components/fields/InnCode';
 import { VueEditor } from "vue2-editor";
 
 export default {
