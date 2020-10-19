@@ -31,7 +31,6 @@ export default {
                 } else if(messages.hasOwnProperty('data')) {
 
                   if (messages.data.hasOwnProperty('errors')) {
-                    if (messages.data.hasOwnProperty('errors')) {
                       const arrayE = messages.data.errors;
 
                       options['type'] = 'html';
@@ -39,10 +38,8 @@ export default {
 
                       message = this.F_ERROR_TEMPLETE( this.GET_ARRAY_DATA_MESSAGES( messages.data.errors ) )
 
-                    } else {
-
-                      message = messages.data.message
-                    }
+                  } else {
+                    message = messages.data.message
                   }
                 }
 
