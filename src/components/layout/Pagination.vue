@@ -5,7 +5,7 @@
       class="my-4"
       color="btnCC"
       :total-visible="PAGINATION.TotalVisible"
-      :length="this.data.total"
+      :length="Math.ceil(data.total / Number(data.per_page))"
     ></v-pagination>
   </v-container>
 </template>
@@ -26,6 +26,7 @@ export default {
   },
   watch: {
     page() {
+      console.log(this.data.total,this.data )
       const query = this.page ? `?page=${this.page}` : '';
 
       this.$emit('update', query);
