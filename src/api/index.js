@@ -32,7 +32,7 @@ const setHeader = (name, value) => api.defaults.headers.common[name] = value;
 const get = async (resource, data = false) => data ? await api.get(`${resource}?${jsonToQuery(data)}`) : await api.get(resource);
 const post = async (resource, data) => await api.post(resource, data);
 const put = async (resource, data) => await api.put(resource, data);
-const patch = async (resource, id ,data = null) => await api.patch(`${resource}/${id}`, data);
+const patch = async (resource, id = null ,data = null) => id ? await api.patch(`${resource}/${id}`, data) : await api.patch(resource, data);
 
 const index = async (resource) => await api.get(resource);
 const show = async (resource, id = null) => await api.get(`${resource}/${id}`);

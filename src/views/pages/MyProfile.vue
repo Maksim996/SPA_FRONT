@@ -103,19 +103,16 @@
                   <v-expansion-panel>
                     <v-expansion-panel-header>{{ $t('t.ChangePassword') }}</v-expansion-panel-header>
                     <v-expansion-panel-content>
-                      <ChangePassword :post="'/api/change_passport/'"/>
+                      <ChangePassword :path="'/api/change-password'"/>
                     </v-expansion-panel-content>
                   </v-expansion-panel>
                 </v-expansion-panels>
               </v-col>
             </v-row>
-
           </v-card>
         </v-tab-item>
       </v-tabs-items>
     </v-tabs>
-
-
   </div>
 
 </template>

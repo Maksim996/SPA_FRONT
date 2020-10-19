@@ -48,7 +48,7 @@ import api from '@/api'
       }
     },
     props: {
-      post: {
+      path: {
         type: String,
         default: '',
       }
@@ -65,12 +65,12 @@ import api from '@/api'
               password_confirmation: this.confirmPassword
             };
 
-            const status = await api.patch(this.post, null, data);
+            const status = await api.patch(this.path, null, data);
 
             this.GlobalMixinMessagesSuccess( this.$t('m.PasswordChangedSuccessfully') );
             this.clearPassword();
           } catch (e) {
-            this.GlobalMixinMessagesError(e);
+            this.GlobalMixinMessagesError(e.response);
           }
         } else {
           this.GlobalMixinMessagesError(this.$t('m.FormIsNotCompletedCorrectly'));
