@@ -1,30 +1,40 @@
 <template>
   <ValidationObserver ref="ChangePassword" v-slot="{ validate, reset }">
     <form>
-      <ValidationProvider v-slot="{ errors }" :name="$t('t.CurrentPassword')" rules="required|min:8">
+      <ValidationProvider v-slot="{ errors }" :name="$t('t.CurrentPassword')" rules="required|min:8|max:255">
         <v-text-field
           v-model="сurrentPassword"
           :error-messages="errors"
           :label="$t('t.CurrentPassword')"
-          type="password"
           required
+          :type="showCurrentPassword ? 'text' : 'password'"
+          :append-icon="showCurrentPassword ? 'mdi-eye' : 'mdi-eye-off'"
+          @click:append="showCurrentPassword = !showCurrentPassword"
         ></v-text-field>
       </ValidationProvider>
-      <ValidationProvider v-slot="{ errors }" :name="$t('t.NewPassword')" rules="required|min:8" vid="newPassword">
+      <ValidationProvider v-slot="{ errors }" :name="$t('t.NewPassword')" rules="required|min:8|max:255" vid="newPassword">
         <v-text-field
           v-model="newPassword"
           :error-messages="errors"
           :label="$t('t.NewPassword')"
+          type="password"
           required
+          :type="showNewPassword ? 'text' : 'password'"
+          :append-icon="showNewPassword ? 'mdi-eye' : 'mdi-eye-off'"
+          @click:append="showNewPassword = !showNewPassword"
         ></v-text-field>
       </ValidationProvider>
       <ValidationProvider v-slot="{ errors }" :name="$t('t.ConfirmPassword')"
-                          rules="required|min:8|confirmed:newPassword">
+                          rules="required|min:8|max:255|confirmed:newPassword">
         <v-text-field
           v-model="confirmPassword"
           :error-messages="errors"
           :label="$t('t.ConfirmPassword')"
+          type="password"
           required
+          :type="showConfirmPassword ? 'text' : 'password'"
+          :append-icon="showConfirmPassword ? 'mdi-eye' : 'mdi-eye-off'"
+          @click:append="showConfirmPassword = !showConfirmPassword"
         ></v-text-field>
       </ValidationProvider>
       <div class="mt-3">
@@ -42,9 +52,12 @@ import api from '@/api'
     name: "ChangePassword",
     data() {
       return {
-        confirmPassword: '',
         newPassword: '',
         сurrentPassword: '',
+        confirmPassword: '',
+        showCurrentPassword: false,
+        showNewPassword: false,
+        showConfirmPassword: false
       }
     },
     props: {
