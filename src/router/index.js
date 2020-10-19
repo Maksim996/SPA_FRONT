@@ -11,6 +11,7 @@ import {ROLES} from '@/utils/constants';
 import store from '@/store';
 import Layout from '@/views/Layout';
 import EditDirector from '@/views/pages/Director/EditDirector'
+import EditPassword from "@/views/pages/Director/EditPassword";
 
 Vue.use(VueRouter);
 
@@ -79,12 +80,32 @@ const routes = [
   },
   {
     path: '/my-profile',
-    name: 'MyProfile',
-    component: MyProfile,
+    component: Layout,
     beforeEnter: ifAuth,
     meta: {
       accessIsAllowed: allRoles(),
     },
+    children: [
+      // this is also a route record
+      {
+        path: '/',
+        name: 'MyProfile',
+        component: MyProfile,
+        beforeEnter: ifAuth,
+        meta: {
+          accessIsAllowed: allRoles(),
+        },
+      },
+      {
+        path: 'edit/password',
+        name: 'EditPassword',
+        component: EditPassword,
+        beforeEnter: ifAuth,
+        meta: {
+          accessIsAllowed: allRoles(),
+        },
+      },
+    ]
   },
   {
     path: '/create-director',
@@ -121,24 +142,6 @@ const routes = [
       },
     ]
   },
-  // {
-  //   path: '/list-directors',
-  //   name: 'ListDirectors',
-  //   component: ListDirectors,
-  //   beforeEnter: ifAuth,
-  //   meta: {
-  //     accessIsAllowed: allRoles(),
-  //   },
-  // },
-  // {
-  //   path: '/edit-directors/:id',
-  //   name: 'EditDirector',
-  //   component: ListDirectors,
-  //   beforeEnter: ifAuth,
-  //   meta: {
-  //     accessIsAllowed: allRoles(),
-  //   },
-  // },
   {
     path: '*',
     name: 'notFound',
