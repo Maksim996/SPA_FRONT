@@ -26,7 +26,6 @@ export default {
   },
   watch: {
     page() {
-      console.log(this.data.total,this.data )
       const query = this.page ? `?page=${this.page}` : '';
 
       this.$emit('update', query);
