@@ -3,7 +3,7 @@
     <template v-if="dataDirector">
       <v-row>
         <div>
-          <v-sheet class="font-weight-medium text-h4 text-lg-h4 text-md-h5 mb-5 text-md-center" color="headerCC--text">{{$t('t.CreateDirector')}}</v-sheet>
+          <v-sheet class="font-weight-medium text-h4 text-lg-h4 text-md-h5 mb-5 text-md-center" color="headerCC--text">{{$t('t.EditDirector')}}</v-sheet>
         </div>
       </v-row>
       <FormDirector ref="form" :dataProps="dataDirector"/>
@@ -12,7 +12,7 @@
         <v-btn color="btnCC white--text" class="mr-4" @click="submitForm">{{$t('t.Save')}}</v-btn>
       </div>
     </template>
-    <base-loader v-else></base-loader>
+    <base-loader v-else />
 
   </v-container>
 
