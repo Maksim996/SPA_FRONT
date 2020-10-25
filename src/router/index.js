@@ -11,7 +11,9 @@ import {ROLES} from '@/utils/constants';
 import store from '@/store';
 import Layout from '@/views/Layout';
 import EditDirector from '@/views/pages/Director/EditDirector'
-import EditPassword from "@/views/pages/Director/EditPassword";
+import EditPassword from '@/views/pages/Director/EditPassword';
+import EditAvatar from '@/views/pages/EditAvatar';
+import EditMyProfile from '@/views/pages/Director/EditMyProfile';
 
 Vue.use(VueRouter);
 
@@ -100,6 +102,24 @@ const routes = [
         path: 'edit/password',
         name: 'EditPassword',
         component: EditPassword,
+        beforeEnter: ifAuth,
+        meta: {
+          accessIsAllowed: allRoles(),
+        },
+      },
+      {
+        path: 'edit/profile',
+        name: 'EditProfile',
+        component: EditMyProfile,
+        beforeEnter: ifAuth,
+        meta: {
+          accessIsAllowed: allRoles(),
+        },
+      },
+      {
+        path: 'edit/avatar',
+        name: 'EditAvatar',
+        component: EditAvatar,
         beforeEnter: ifAuth,
         meta: {
           accessIsAllowed: allRoles(),
