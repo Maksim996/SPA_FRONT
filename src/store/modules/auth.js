@@ -82,6 +82,9 @@ const mutations = {
     state.token = null;
     state.currentUser = null;
   },
+  updateCurrentUser(state, payload) {
+    state.currentUser = {...state.currentUser, ...payload}
+  }
 };
 
 export default {
