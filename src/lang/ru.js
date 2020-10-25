@@ -57,7 +57,6 @@ export default {
     GeneralInfo: 'Общая информация',
     Settings: 'Настройки',
     ChangePassword: 'Изменить пароль',
-    EditGeneralInfo: 'Редактировать общую информацию',
     ChangeAvatar: 'Изменить фото профиля',
     ConfirmPassword: 'Подтверждение пароля',
     NewPassword: 'Новый пароль',
@@ -66,6 +65,9 @@ export default {
     Yes: 'Да',
     No: 'Нет',
     NoData: 'Нет Данных',
+    EditDirector: 'Редактировать директора',
+    Edit: 'Редактировать',
+    EditMyProfile: 'Редактировать свой профиль'
   },
 
   veeValidate: {
