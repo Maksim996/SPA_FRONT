@@ -40,73 +40,8 @@
             flat
           >
             <v-row class="justify-center">
-              <v-col class="col-lg-9 col-11">
-                <v-expansion-panels>
-                  <v-expansion-panel>
-                    <v-expansion-panel-header>{{ $t('t.ChangeAvatar') }}</v-expansion-panel-header>
-                    <v-expansion-panel-content>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                      labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                      nisi ut aliquip ex ea commodo consequat.
-                    </v-expansion-panel-content>
-                  </v-expansion-panel>
-                  <v-expansion-panel>
-                    <v-expansion-panel-header>{{ $t('t.EditGeneralInfo') }}</v-expansion-panel-header>
-                    <v-expansion-panel-content>
-                      <validation-observer ref="formValidate" v-slot="{ validate, reset }">
-                        <form>
-                          <FirstSecondNames ref="FirstSecondNames"
-                                            :firstNameProp="user.first_name"
-                                            :secondNameProp="user.second_name"
-                                            :patronymicProp="user.patronymic"
-                          />
-                          <Phones ref="Phones"
-                                  :phoneProp="user.phone"
-                                  :additionalPhoneProp="user.additional_phone"
-                          />
-                          <BirthdayDatePicker ref="BirthdayDatePicker"
-                                              :dateProp="user.birthday"
-                          />
-                          <SexType ref="SexType"
-                                   :sexTypeProp="user.sex"
-                          />
-                          <NumberPassport ref="NumberPassport"
-                                          :passportTypeProp="user.type_passport"
-                                          :passportProp="user.passport"
-                          />
-                          <InnCode ref="InnCode"
-                                   :innCodeProp="user.inn_code"
-                          />
-                          <v-row>
-                            <v-col cols="12" md="4">
-                              <validation-provider v-slot="{ errors }" :name="$t('t.Email')" rules="required|email">
-                                <v-text-field
-                                  v-model="email"
-                                  :label="$t('t.Email')"
-                                  name="Email"
-                                  prepend-icon="mdi-email"
-                                  type="text"
-                                  :error-messages="errors"
-                                ></v-text-field>
-                              </validation-provider>
-                            </v-col>
-                          </v-row>
-                          <vue-editor v-model="description" :editor-toolbar="$getConst('TEXT_EDITOR_TOOLBAR_USER')"/>
-                          <div class="mt-3">
-                            <v-btn class="mr-4" color="btnCC white--text" @click="saveGeneralInfo">{{ $t('t.Save') }}
-                            </v-btn>
-                          </div>
-                        </form>
-                      </validation-observer>
-                    </v-expansion-panel-content>
-                  </v-expansion-panel>
-                  <v-expansion-panel>
-                    <v-expansion-panel-header>{{ $t('t.ChangePassword') }}</v-expansion-panel-header>
-                    <v-expansion-panel-content>
-                      <ChangePassword :path="'/api/change-password'"/>
-                    </v-expansion-panel-content>
-                  </v-expansion-panel>
-                </v-expansion-panels>
+              <v-col cols="12" md="8">
+                <LinksBoxImg :links="BoxSettings"/>
               </v-col>
             </v-row>
           </v-card>
@@ -129,7 +64,8 @@ import BirthdayDatePicker from '@/components/fields/BirthdayDatePicker';
 import SexType from '@/components/fields/SexType';
 import NumberPassport from '@/components/fields/NumberPassport';
 import InnCode from '@/components/fields/InnCode';
-import { VueEditor } from "vue2-editor";
+import { VueEditor } from 'vue2-editor';
+import LinksBoxImg from '@/components/layout/LinksBoxImg';
 
 export default {
   components: {
@@ -144,6 +80,7 @@ export default {
     NumberPassport,
     InnCode,
     VueEditor,
+    LinksBoxImg,
   },
   name: "MyProfile",
   data() {
@@ -160,6 +97,23 @@ export default {
       headersSettings: ['ChangeAvatar', 'EditGeneralInfo', 'ChangePassword'],
       description: '',
       user_id: null,
+      BoxSettings: [
+        {
+          src: '/images/others/replaceAvatar.png',
+          route: 'EditProfile',
+          text: this.$t('t.EditMyProfile')
+        },
+        {
+          route: 'EditAvatar',
+          src: '/images/others/replaceAvatar.png',
+          text: this.$t('t.ChangeAvatar')
+        },
+        {
+          src: '/images/others/replaceAvatar.png',
+          route: 'EditPassword',
+          text: this.$t('t.ChangePassword')
+        }
+      ]
     }
   },
   mounted() {
