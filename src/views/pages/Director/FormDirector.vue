@@ -1,6 +1,6 @@
 <template>
   <validation-observer ref="formDirector" v-slot="{ validate, reset }">
-    <form>
+    <form v-if="dataProps">
       <FirstSecondNames ref="FirstSecondNames"
                         :first-name-prop="dataProps.first_name"
                         :second-name-prop="dataProps.second_name"
