@@ -36,8 +36,8 @@
     name: "AvatarProfile",
     data(){
       return {
-        avatar: `images/default/AvatarMan.png`,
-        background: 'images/default/background.jpg',
+        avatar: `/images/default/AvatarMan.png`,
+        background: '/images/default/background.jpg',
         rules: 'admin'
       }
     },
