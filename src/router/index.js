@@ -105,6 +105,10 @@ const routes = [
         beforeEnter: ifAuth,
         meta: {
           accessIsAllowed: allRoles(),
+          breadcrumb: [
+            { text:'MyProfile', exact:true, to: '/my-profile'},
+            { text:'ChangePassword'},
+          ]
         },
       },
       {
@@ -114,6 +118,10 @@ const routes = [
         beforeEnter: ifAuth,
         meta: {
           accessIsAllowed: allRoles(),
+          breadcrumb: [
+            { text:'MyProfile', exact:true, to: '/my-profile'},
+            { text:'EditMyProfile'},
+          ]
         },
       },
       {
@@ -123,6 +131,10 @@ const routes = [
         beforeEnter: ifAuth,
         meta: {
           accessIsAllowed: allRoles(),
+          breadcrumb: [
+            { text:'MyProfile', exact:true, to: '/my-profile'},
+            { text:'ChangeAvatar'},
+          ]
         },
       },
     ]
