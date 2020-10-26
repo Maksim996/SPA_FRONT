@@ -35,12 +35,12 @@
     mixins: [
       MixinDrawer
     ],
+    name: "Header",
     data() {
       return {
         logo: process.env.VUE_APP_LOGO,
       }
     },
-    name: "Header"
   }
 </script>
 
