@@ -7,6 +7,7 @@
     <v-main>
       <v-container :fill-height="!isLogged" class="h-100 ">
         <FlashMessage :position="'right bottom'"/>
+        <Breadcrumb/>
         <router-view></router-view>
       </v-container>
     </v-main>
@@ -14,14 +15,16 @@
 </template>
 
 <script>
-  import Navigation from "@/components/layout/Navigation.vue";
-  import TopBar from "@/components/layout/TopBar.vue";
+  import Navigation from '@/components/layout/Navigation.vue';
+  import TopBar from '@/components/layout/TopBar.vue';
+  import Breadcrumb from '@/components/layout/Breadcrumb';
 
   export default {
   name: 'App',
   components: {
     Navigation,
-    TopBar
+    TopBar,
+    Breadcrumb
   },
   data: () => ({
 
