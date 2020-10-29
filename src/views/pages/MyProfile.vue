@@ -45,9 +45,7 @@
                   <v-expansion-panel>
                     <v-expansion-panel-header>{{ $t('t.ChangeAvatar') }}</v-expansion-panel-header>
                     <v-expansion-panel-content>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                      labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                      nisi ut aliquip ex ea commodo consequat.
+                      <AvatarSetting />
                     </v-expansion-panel-content>
                   </v-expansion-panel>
                   <v-expansion-panel>
@@ -129,6 +127,7 @@ import BirthdayDatePicker from '@/components/fields/BirthdayDatePicker';
 import SexType from '@/components/fields/SexType';
 import NumberPassport from '@/components/fields/NumberPassport';
 import InnCode from '@/components/fields/InnCode';
+import AvatarSetting from '@/components/fields/AvatarSetting';
 import { VueEditor } from "vue2-editor";
 
 export default {
@@ -144,6 +143,7 @@ export default {
     NumberPassport,
     InnCode,
     VueEditor,
+    AvatarSetting,
   },
   name: "MyProfile",
   data() {
