@@ -49,12 +49,12 @@
                             <input type="radio" :value="1.334" v-model="ratio">4:3 <br>
                             <input type="radio" :value="1.777" v-model="ratio">16:9 <br>
                         </form>
-                        <form>
+        <!--  for clipper-fixed              <form>
                             <label>BG color</label> <br>
                             <input type="radio" value="white" v-model="bgcolor" checked>White <br>
                             <input type="radio" value="grey" v-model="bgcolor">Grey <br>
                             <input type="radio" value="black" v-model="bgcolor">Black 
-                        </form>
+                        </form>   -->
                     </v-col>
                 </v-row>
                 <v-row>
