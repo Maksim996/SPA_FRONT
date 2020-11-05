@@ -26,7 +26,7 @@
                         </v-btn>
                     </v-col>
                     <v-col cols="9">
-                        <clipper-basic 
+                        <clipper-fixed 
                             class="my-clipper" 
                             ref="clipper" 
                             preview="my-preview" 
@@ -38,23 +38,23 @@
                             :bg-color="bgcolor"
                         >
                             <div class="placeholder" slot="placeholder">No image</div>
-                        </clipper-basic>
+                        </clipper-fixed>
                     </v-col>
                     <v-col cols="3">
                         <form>
-                 <!-- for clipper-fixed          <input type="checkbox" v-model="round" @click="(round==false) ? ratio=1: '' ">Round <br> -->
+                        <input type="checkbox" v-model="round" @click="(round==false) ? ratio=1: '' ">Round <br> 
                             <input type="checkbox" v-model="grid">Grid <br>
                             <input type="checkbox" v-model="corner">Corner <br>
                             <input type="radio" :value="1" v-model="ratio">1:1 <br>
                             <input type="radio" :value="1.334" v-model="ratio">4:3 <br>
                             <input type="radio" :value="1.777" v-model="ratio">16:9 <br>
                         </form>
-        <!--  for clipper-fixed              <form>
+                        <form>
                             <label>BG color</label> <br>
                             <input type="radio" value="white" v-model="bgcolor" checked>White <br>
                             <input type="radio" value="grey" v-model="bgcolor">Grey <br>
                             <input type="radio" value="black" v-model="bgcolor">Black 
-                        </form>   -->
+                        </form>  
                     </v-col>
                 </v-row>
                 <v-row>
@@ -104,8 +104,8 @@ export default {
         },
         methods: {
             getResult () {
-                const canvas = this.$refs.clipper.clip();//call component's clip method
-                this.resultURL = canvas.toDataURL("image/jpeg", 1);//canvas->image
+                const canvas = this.$refs.clipper.clip();
+                this.resultURL = canvas.toDataURL("image/jpeg", 1);
             },
         }
 }
