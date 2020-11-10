@@ -10,7 +10,7 @@
       <BirthdayDatePicker ref="BirthdayDatePicker" :date-prop="dataProps.birthday" />
       <SexType ref="SexType" :sex-type-prop="dataProps.sex"/>
       <NumberPassport ref="NumberPassport" :passport-type-prop="dataProps.type_passport" :passport-prop="dataProps.passport"/>
-      <InnCode ref="InnCode" :innCodeProp="dataProps.inn_code" />
+      <InnCode ref="InnCode" :inn-code-prop="dataProps.inn_code" />
       <Email ref="email" :email-prop="dataProps.email"/>
 
     </form>
