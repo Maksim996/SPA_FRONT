@@ -19,6 +19,11 @@ export default {
       icon: 'mdi-clipboard-list',
       route: 'ListDirectors',
     };
+    const SettingMyProfile = {
+      title: 'MyProfile',
+      icon: 'mdi-account-settings',
+      route: 'SettingMyProfile',
+    };
 
     // items
     const CreateDirectorAndOptions = {
@@ -29,6 +34,15 @@ export default {
         CreateDirector,
       ],
     };
+
+    const SettingRoot = {
+      title: 'Settings',
+      icon: 'mdi-cog',
+      submenu: [
+        SettingMyProfile
+      ],
+    };
+
     let rows = [];
     if (user) {
       rows.push(MyProfile);
@@ -36,7 +50,8 @@ export default {
       switch (user.role_id) {
         case ROLES.ID.Root:
           rows.push(
-            CreateDirectorAndOptions
+            CreateDirectorAndOptions,
+            SettingRoot
           );
           break;
 

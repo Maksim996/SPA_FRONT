@@ -2,24 +2,23 @@
   <v-container fluid>
     <v-row class="justify-center">
       <v-col class="col-lg-8 col-12">
-        <template v-for="itemHeader in items">
-          <v-row class="items_line_info" v-for="(item, key) in itemHeader" :key="key">
+        <v-divider/>
+        <template v-for="(value, header) in informationsAboutUser">
+<!--          {{header}} : {{value}}-->
+          <v-row v-if="value || value === ''" class="items_line_info" :key="header">
             <v-col class="col-lg-3 col-5">
-              <p class="font-weight-medium">{{$t(`t.${key}`) }}:</p>
+              <p class="font-weight-medium">{{$t(`t.${header}`) }}:</p>
             </v-col>
             <v-col class="col-lg-9 col-7">
-              <template v-if="key === 'Sex'">
-                {{ $t(`t.${GlobalChangeSex(item)}`)}}
-              </template>
-              <template v-else-if="key === 'PassportType'">
-                <v-icon> {{item ? 'mdi-passport-biometric': 'mdi-passport' }}</v-icon>
+              <template v-if="header === 'Sex'">
+                {{ $t(`t.${GlobalChangeSex(value)}`)}}
               </template>
               <template v-else>
-                {{item}}
+                {{value}}
               </template>
             </v-col>
           </v-row>
-          <v-divider/>
+          <v-divider v-if="value || value === ''"/>
         </template>
       </v-col>
     </v-row>
@@ -28,9 +27,9 @@
 
 <script>
     export default {
-        name: "AboutInfoProfile",
+      name: "AboutInfoProfile",
       props: {
-        items: {
+        informationsAboutUser: {
           type: Object,
           default: null
         }

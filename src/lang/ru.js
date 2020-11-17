@@ -56,6 +56,7 @@ export default {
     Welcome: 'Добро пожаловать',
     GeneralInfo: 'Общая информация',
     Settings: 'Настройки',
+    SettingMyProfile: 'Настройка профиля',
     ChangePassword: 'Изменить пароль',
     ChangeAvatar: 'Изменить фото профиля',
     ConfirmPassword: 'Подтверждение пароля',

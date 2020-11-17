@@ -1,5 +1,5 @@
 <template>
-  <v-breadcrumbs :items="breadcrumbList" class="breadcrumb-custom">
+  <v-breadcrumbs v-if="breadcrumbList" :items="breadcrumbList" class="breadcrumb-custom">
     <template v-slot:item="{ item }">
       <v-breadcrumbs-item
         :href="item.href"

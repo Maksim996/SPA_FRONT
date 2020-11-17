@@ -1,9 +1,7 @@
 <template>
   <v-container>
     <v-row>
-      <div>
-        <v-sheet class="font-weight-medium text-h4 text-lg-h4 text-md-h5 mb-5 text-md-center" color="headerCC--text">{{$t('t.CreateDirector')}}</v-sheet>
-      </div>
+      <TitlePage :title="$t('t.CreateDirector')"/>
     </v-row>
     <validation-observer ref="createDirector" v-slot="{ validate, reset }">
       <form>
@@ -46,7 +44,8 @@
   import {SEX_TYPE} from '@/utils/constants';
   import NumberPassport from '@/components/fields/NumberPassport';
   import InnCode from '@/components/fields/InnCode';
-  import SexType from '@/components/fields/SexType'
+  import SexType from '@/components/fields/SexType';
+  import TitlePage from '@/components/TitlePage';
 
   export default {
     components:{
@@ -56,6 +55,7 @@
       NumberPassport,
       InnCode,
       SexType,
+      TitlePage,
     },
     name: "CreateDirector",
     data() {

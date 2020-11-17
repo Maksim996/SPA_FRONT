@@ -64,3 +64,18 @@ export const TEXT_EDITOR_TOOLBAR_USER = [
   }],
   ["link"], ["clean"] // remove formatting button
 ]
+
+export const FIELDS_FOR_I18N = {
+  'first_name': 'FirstName',
+  'second_name': 'SecondName',
+  'patronymic': 'Patronymic',
+  'birthday': 'Birthday',
+  'sex' : 'Sex',
+  'email': 'Email',
+  'phone_format': 'NumberMobPhone',
+  'additional_phone_format': 'AdditionalPhone',
+  'inn_code': 'InnCode',
+  'type_passport' : 'PassportType',
+  'passport': 'Passport',
+  'image': 'Image',
+}

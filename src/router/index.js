@@ -14,6 +14,7 @@ import EditDirector from '@/views/pages/Director/EditDirector'
 import EditPassword from '@/views/pages/Director/EditPassword';
 import EditAvatar from '@/views/pages/EditAvatar';
 import EditMyProfile from '@/views/pages/Director/EditMyProfile';
+import SettingMyProfile from '@/views/layout/SettingMyProfile';
 
 Vue.use(VueRouter);
 
@@ -81,6 +82,68 @@ const routes = [
     },
   },
   {
+    path: '/setting-my-profile',
+    component: Layout,
+    beforeEnter: ifAuth,
+    meta: {
+      accessIsAllowed: allRoles(),
+    },
+    children: [
+      {
+        path: '/',
+        name: 'SettingMyProfile',
+        component: SettingMyProfile,
+        beforeEnter: ifAuth,
+        meta: {
+          accessIsAllowed: allRoles(),
+        },
+      },
+      {
+        path: 'edit/password',
+        name: 'EditPassword',
+        component: EditPassword,
+        beforeEnter: ifAuth,
+        meta: {
+          accessIsAllowed: allRoles(),
+          breadcrumb: [
+            { text:'SettingMyProfile', exact:true, to: '/setting-my-profile'},
+            { text:'ChangePassword'},
+          ]
+        },
+      },
+      {
+        path: 'edit/profile',
+        name: 'EditProfile',
+        component: EditMyProfile,
+        beforeEnter: ifAuth,
+        meta: {
+          accessIsAllowed: allRoles(),
+          breadcrumb: [
+            { text:'SettingMyProfile', exact:true, to: '/setting-my-profile'},
+            // { text:'MyProfile', exact:true, to: '/my-profile'},
+            { text:'EditMyProfile'},
+          ]
+        },
+      },
+      {
+        path: 'edit/avatar',
+        name: 'EditAvatar',
+        component: EditAvatar,
+        beforeEnter: ifAuth,
+        meta: {
+          accessIsAllowed: allRoles(),
+          breadcrumb: [
+
+            { text:'SettingMyProfile', exact:true, to: '/setting-my-profile'},
+            // { text:'MyProfile', exact:true, to: '/my-profile'},
+            { text:'ChangeAvatar'},
+          ]
+        },
+      },
+    ]
+
+  },
+  {
     path: '/my-profile',
     component: Layout,
     beforeEnter: ifAuth,
@@ -98,45 +161,45 @@ const routes = [
           accessIsAllowed: allRoles(),
         },
       },
-      {
-        path: 'edit/password',
-        name: 'EditPassword',
-        component: EditPassword,
-        beforeEnter: ifAuth,
-        meta: {
-          accessIsAllowed: allRoles(),
-          breadcrumb: [
-            { text:'MyProfile', exact:true, to: '/my-profile'},
-            { text:'ChangePassword'},
-          ]
-        },
-      },
-      {
-        path: 'edit/profile',
-        name: 'EditProfile',
-        component: EditMyProfile,
-        beforeEnter: ifAuth,
-        meta: {
-          accessIsAllowed: allRoles(),
-          breadcrumb: [
-            { text:'MyProfile', exact:true, to: '/my-profile'},
-            { text:'EditMyProfile'},
-          ]
-        },
-      },
-      {
-        path: 'edit/avatar',
-        name: 'EditAvatar',
-        component: EditAvatar,
-        beforeEnter: ifAuth,
-        meta: {
-          accessIsAllowed: allRoles(),
-          breadcrumb: [
-            { text:'MyProfile', exact:true, to: '/my-profile'},
-            { text:'ChangeAvatar'},
-          ]
-        },
-      },
+      // {
+      //   path: 'edit/password',
+      //   name: 'EditPassword',
+      //   component: EditPassword,
+      //   beforeEnter: ifAuth,
+      //   meta: {
+      //     accessIsAllowed: allRoles(),
+      //     breadcrumb: [
+      //       { text:'MyProfile', exact:true, to: '/my-profile'},
+      //       { text:'ChangePassword'},
+      //     ]
+      //   },
+      // },
+      // {
+      //   path: 'edit/profile',
+      //   name: 'EditProfile',
+      //   component: EditMyProfile,
+      //   beforeEnter: ifAuth,
+      //   meta: {
+      //     accessIsAllowed: allRoles(),
+      //     breadcrumb: [
+      //       { text:'MyProfile', exact:true, to: '/my-profile'},
+      //       { text:'EditMyProfile'},
+      //     ]
+      //   },
+      // },
+      // {
+      //   path: 'edit/avatar',
+      //   name: 'EditAvatar',
+      //   component: EditAvatar,
+      //   beforeEnter: ifAuth,
+      //   meta: {
+      //     accessIsAllowed: allRoles(),
+      //     breadcrumb: [
+      //       { text:'MyProfile', exact:true, to: '/my-profile'},
+      //       { text:'ChangeAvatar'},
+      //     ]
+      //   },
+      // },
     ]
   },
   {
