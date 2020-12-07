@@ -15,6 +15,7 @@ import EditPassword from '@/views/pages/Director/EditPassword';
 import EditAvatar from '@/views/pages/EditAvatar';
 import EditMyProfile from '@/views/pages/Director/EditMyProfile';
 import SettingMyProfile from '@/views/layout/SettingMyProfile';
+import Area from '@/views/pages/Root/Area';
 
 Vue.use(VueRouter);
 
@@ -160,6 +161,18 @@ const routes = [
         meta: {
           accessIsAllowed: allRoles(),
         },
+      },
+      {
+        path: '/area',
+        component: Area,
+        beforeEnter: ifAuth,
+        meta: {
+          accessIsAllowed: [ ROLES.ID.Root ],
+          breadcrumb: [
+            { text: 'Area', exact: true, to: '/area' },
+            { text: 'Area' },
+          ]
+        }
       },
       // {
       //   path: 'edit/password',
