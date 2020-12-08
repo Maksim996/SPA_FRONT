@@ -76,7 +76,7 @@
           {
             text: this.$t('t.FIO'),
             classes: 'start',
-            value: 'fullName',
+            value: 'full_name',
           },
           {text: this.$t('t.NumberMobPhone'), value: 'phone_format'},
           {text: this.$t('t.Email'), value: 'email'},
