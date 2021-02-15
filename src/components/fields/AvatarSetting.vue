@@ -18,14 +18,8 @@
                                 </v-icon>
                             </clipper-upload>
                         </v-btn>
-                        <v-btn
-                            color="info"
-                            @click="getResult()"
-                        >
-                            Clip image
-                        </v-btn>
                     </v-col>
-                    <v-col cols="9">
+                    <v-col cols="6">
                         <clipper-fixed 
                             class="my-clipper" 
                             ref="clipper" 
@@ -33,40 +27,59 @@
                             :src="imgURL" 
                             :round="round" 
                             :grid="grid" 
-                            :corner="corner"
                             :ratio="ratio"  
                             :bg-color="bgcolor"
+                            
                         >
                             <div class="placeholder" slot="placeholder">No image</div>
                         </clipper-fixed>
                     </v-col>
-                    <v-col cols="3">
-                        <form>
-                        <input type="checkbox" v-model="round" @click="(round==false) ? ratio=1: '' ">Round <br> 
-                            <input type="checkbox" v-model="grid">Grid <br>
-                            <input type="checkbox" v-model="corner">Corner <br>
-                            <input type="radio" :value="1" v-model="ratio">1:1 <br>
-                            <input type="radio" :value="1.334" v-model="ratio">4:3 <br>
-                            <input type="radio" :value="1.777" v-model="ratio">16:9 <br>
-                        </form>
-                        <form>
-                            <label>BG color</label> <br>
-                            <input type="radio" value="white" v-model="bgcolor" checked>White <br>
-                            <input type="radio" value="grey" v-model="bgcolor">Grey <br>
-                            <input type="radio" value="black" v-model="bgcolor">Black 
-                        </form>  
+                    <v-col cols="5">
+                        <v-row>
+                            <v-col cols="6">
+                                <form>
+                                    <input type="checkbox" v-model="round" @click="!round ? (ratio=1, disabledRadio=true) : disabledRadio=false ">Round <br> 
+                                    <input type="checkbox" v-model="grid">Grid <br>
+                                    <input type="radio" :value="1" v-model="ratio" :disabled='disabledRadio'>1:1 <br>
+                                    <input type="radio" :value="1.334" v-model="ratio" :disabled='disabledRadio'>4:3 <br>
+                                    <input type="radio" :value="1.777" v-model="ratio" :disabled='disabledRadio'>16:9 <br>
+                                </form>
+                            </v-col>
+                            <v-col cols="6">
+                                <form>
+                                    <label>BG color</label> <br>
+                                    <input type="radio" value="white" v-model="bgcolor" checked>White <br>
+                                    <input type="radio" value="grey" v-model="bgcolor">Grey <br>
+                                    <input type="radio" value="black" v-model="bgcolor">Black 
+                                </form>  
+                            </v-col>
+                        </v-row>
+                        <v-row>
+                            <v-col cols="10">
+                                <div>Preview:</div>
+                                <div :class="round ? 'circle' : '' ">
+                                    <clipper-preview id="face1" name="my-preview" class="my-clipper" :class="!round ? 'border-img' : ''">
+                                        <div class="placeholder" slot="placeholder">Preview area</div>
+                                    </clipper-preview>
+                                </div>
+                            </v-col>
+                        </v-row>
                     </v-col>
                 </v-row>
                 <v-row>
-                    <v-col cols="6">
-                        <div>Preview:</div>
-                        <clipper-preview id="face1" name="my-preview" class="my-clipper border-img" :round="round">
-                            <div class="placeholder" slot="placeholder">Preview area</div>
-                        </clipper-preview>
-                    </v-col> 
                     <v-col cols="6">  
                         <div>result:</div>
                         <img class="my-clipper" :class="(resultURL === '') ? '' : 'border-img'" :src="resultURL" alt="">
+                    </v-col>
+                </v-row>
+                <v-row>
+                    <v-col>
+                        <v-btn
+                            color="info"
+                            @click="getResult()"
+                        >
+                            Clip image
+                        </v-btn>
                     </v-col>
                 </v-row>
             </div>   
@@ -100,12 +113,14 @@ export default {
             corner: true,
             ratio: 1,
             bgcolor: "white",
+            disabledRadio: false,
         }
         },
         methods: {
             getResult () {
                 const canvas = this.$refs.clipper.clip();
                 this.resultURL = canvas.toDataURL("image/jpeg", 1);
+                console.log(this.resultURL);
             },
         }
 }
@@ -125,5 +140,9 @@ export default {
     }
     .border-img{
         border: 2px solid black;
+    }
+    .circle{
+        border-radius: 50%;
+        overflow: hidden;
     }
 </style>
